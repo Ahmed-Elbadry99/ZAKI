@@ -26,6 +26,7 @@
     --text-color: rgba(255, 255, 255, 0.8);
     --green-color: rgba(41, 206, 71, 1);
     --red-color: rgba(222, 38, 38, 0.8);
+    --text-color: rgba(126, 132, 143, 1);
 }
 
 body {
@@ -91,7 +92,6 @@ p {
 }
 
 p {
-    font-size: clamp(10px, 2vw, 16px);
     color: var(--text-color);
 }
 

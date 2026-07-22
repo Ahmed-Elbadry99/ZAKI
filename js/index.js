@@ -39,22 +39,6 @@ if (activeItem && linksScroll) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //! =============== Dots Dropdown-Menu =============== //
 document.querySelectorAll(".platform-box.close").forEach(item => {
     item.addEventListener("click", (e) => {
