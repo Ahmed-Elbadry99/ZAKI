@@ -1,0 +1,199 @@
+
+/*! ==================== Sidebar ==================== */
+.sidebar {
+    width: 60px;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    z-index: 100;
+    /* background-color: red; */
+}
+.sidebar .logo {
+    width: 60px;
+}
+.sidebar .logo,
+.sidebar .logout {  
+    position: relative;
+    z-index: 99;
+}
+.sidebar .logout img {
+    width: 25px;
+}
+.sidebar .sidebar-content {
+    width: 60px;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-right: auto;
+    background:linear-gradient(to left, #00B3F8, #0B9ADE ,#0F82C3 ,#063F75 );
+    border-radius: 100px 0px 0 100px ;
+    padding-block: 20px;
+}
+.sidebar .sidebar-content .links-scroll {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+}
+.sidebar .sidebar-content ul.links {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 30px;
+    padding: 20px 0;
+    height: 100%;
+    width: 100%;
+}
+.sidebar .sidebar-content ul.links li {
+    position: relative;
+    /* width: 100%; */
+    text-align: center;
+    cursor: pointer;
+}
+.sidebar .sidebar-content ul.links li span {
+    display: none;
+}
+
+.sidebar .active-indicator {
+    position: fixed;
+    width: 4px;
+    height: 30px;
+    background-color: var(--main-color);
+    border-radius: 5px 0 0 5px;
+    right: calc(100% - 100px);
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 999;
+    /* opacity: 1; */
+}
+.sidebar .sidebar-content .links li img {
+    width: 25px;
+    height: 25px;
+    opacity: 0.5;
+    transition: .5s;
+}
+.sidebar .sidebar-content ul.links li.active-link img,
+.sidebar .sidebar-content .links li:hover img {
+    opacity: 1;
+}
+
+/* Shapes */
+.circle-1,
+.circle-2 {
+    width: 80px;
+    height: 80px;
+    background-color: var(--white-color);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+.circle-1 {
+    top: -78px;
+}
+.circle-2 {
+    bottom: -78px;
+}
+.sqaure-1,
+.sqaure-2 {
+    width: 35px;
+    height: 40px;
+    background-color: var(--main-color);
+    position: absolute;
+    left: 0;
+    z-index: 1;
+}
+.sqaure-1 {
+    top: -39px;
+}
+.sqaure-2 {
+    bottom: -39px;
+}
+
+/* Logout */
+.logout-Btn {
+    color: var(--main-color);
+    cursor: pointer;
+    font-size: 14px;
+}
+.menu-icon {
+    display: none;
+    width: fit-content;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--main-color);
+}
+
+/* Tooltip */
+.sidebar .tooltip {
+    position: fixed;
+    background: linear-gradient(to right, #E37500, #FFD7AA);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 1000;
+}
+
+/* Arrow */
+.sidebar .arrow {
+    position: fixed;
+    width: 0;
+    height: 0;
+    border-width: 8.5px;
+    border-style: solid;
+    border-color: transparent #E37500 transparent transparent;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 1000;
+}
+
+/* **************** Sidebar-Responsive ******************/
+.sidebar.responsive {
+    right: 0;
+}
+.sidebar.responsive + .main-content {
+    width: 100% !important;
+    margin-right: 60px !important;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        right: -100%;
+    }
+    .menu-icon {
+        display: block;
+    }
+    /* responsive السايدبار اللى مش واخد كلاس  */
+    .sidebar:not(.responsive) .active-indicator {
+        opacity: 0 !important;
+    }
+
+    .sidebar ~ .main-content .content-data {
+        max-height: calc(100vh - 80px);
+        overflow: auto;
+        scrollbar-width: none;
+    }
+    .sidebar.responsive ~ .main-content {
+        padding: 20px 10px 0 0;
+        min-width: 100vw;
+    }
+}
+

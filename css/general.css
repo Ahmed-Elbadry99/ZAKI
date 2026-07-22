@@ -1,0 +1,159 @@
+
+
+/*! الخطوط */
+@font-face {
+    font-family: "font_main";
+    src: url("../assets/fonts/Cairo-Regular.ttf");
+}
+@font-face {
+    font-family: "font_bold";
+    src: url("../assets/fonts/Cairo-Bold.ttf");
+}
+@font-face {
+    font-family: "font_extra-bold";
+    src: url("../assets/fonts/Cairo-ExtraBold.ttf");
+}
+@font-face {
+    font-family: "font_light";
+    src: url("../assets/fonts/Cairo-Light.ttf");
+}
+
+/*! الألوان الرئيسية */
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --main-color: rgba(0, 179, 248, 1);
+    --text-color: rgba(255, 255, 255, 0.8);
+    --green-color: rgba(41, 206, 71, 1);
+    --red-color: rgba(222, 38, 38, 0.8);
+}
+
+body {
+    direction: rtl;
+    color: var(--white-color);
+    font-family: "font_main", Arial, Helvetica, sans-serif;
+}
+
+::selection {
+    background-color: rgba(0, 179, 248, 1);
+    color: var(--white-color);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    outline: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    text-decoration: none;
+    outline: none;
+}
+
+
+button:focus,
+a {
+    outline: none;
+}
+
+button {
+    border: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+p {
+    font-size: clamp(10px, 2vw, 16px);
+    color: var(--text-color);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/*! Globals */
+/****** Topbar ******/
+.main-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-left: 0;
+    padding-right: 20px;
+}
+.main-title h2.title {
+    font-size: clamp(17px, 2.5vw, 22px);
+    font-weight: 700;
+}
+.main-title span {
+    color: var(--white-color);
+    font-size: clamp(13px, 2vw, 16px);
+}
+.sub-title {
+    font-size: clamp(19px, 2vw, 24px);
+    font-weight: 700;
+}
+
+
+
+
+.head-title h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+.section-title h3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+.head-title span,
+.section-title span {
+    color: var(--main-color);
+}
+/*! Buttons */
+.plus-btn,
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background:
+    linear-gradient(rgba(0, 179, 248, 1), rgba(11, 154, 222, 1), rgba(15, 130, 195, 1), rgba(6, 63, 117, 1)) padding-box,
+    linear-gradient(to right, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
+    border: 1px solid transparent;
+}
+.edit-btn {
+    background:
+    linear-gradient(#000, #000, #000, #000) padding-box,
+    linear-gradient(to left, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
+}
