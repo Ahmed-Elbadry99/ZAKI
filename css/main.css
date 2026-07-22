@@ -19,13 +19,12 @@
     /* overflow: auto; */
 }
 .main-content .content-data {
-    /* min-height: calc(100vh - 90px); */
     min-height: calc(100vh - 105px);
     border-radius: 20px 20px 0 0;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding-bottom: 20px;
+    padding: 30px;
 }
 /*! ==================== Top-bar(Navbar) ==================== */
 .main-content .topbar .logo {
@@ -68,3 +67,142 @@
     padding: 0 20px;
     flex-wrap: wrap;
 }
+
+
+
+
+
+
+
+
+
+/*  */
+.create-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.create-steps .steps-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between; 
+    position: relative;
+}
+.create-steps .steps-container .step-item {
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border: 1.5px solid var(--main-color);
+    box-shadow: 0 9px 10px 0 rgba(0, 179, 248, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+.create-steps .steps-container .step-item p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+}
+/* 
+.create-steps .steps-container svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 2;
+} */
+
+
+.progress-line {
+    --progress: 0%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 3px;
+
+    /* الخط الخلفي */
+    background: repeating-linear-gradient(
+        to right,
+        #666 0 5px,
+        transparent 5px 10px
+    );
+}
+
+.progress-line::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    right: 0;
+    right: 4px;
+    width: var(--progress);
+
+    /* نفس الخلفية بالظبط لكن بلون مختلف */
+    background: repeating-linear-gradient(
+        to right,
+        var(--main-color) 0 5px,
+        transparent 5px 10px
+    );
+}
+
+.create-steps-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.create-steps-content form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-steps-content form .form-group h2 {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+.create-steps-content form .form-group h2 span {
+    font-weight: 600;
+    color: #fff;
+}
+
+.create-steps-content form .form-group  label {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.create-steps-content input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(15, 130, 195, 1);
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+
+.create-steps-content select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid rgba(15, 130, 195, 1);
+    border-radius: 8px;
+    background-color: transparent;
+    appearance: none;
+    color: #fff;
+
+}
+
+
+.create-steps-content option {
+    color: black;
+  }

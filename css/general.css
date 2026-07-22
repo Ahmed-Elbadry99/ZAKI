@@ -104,6 +104,11 @@ img {
     height: 100%;
 }
 
+input,
+select {
+    height: 50px;
+}
+
 /*! Globals */
 /****** Topbar ******/
 .main-title {
