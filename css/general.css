@@ -1,9 +1,7 @@
 
 
 /*! الخطوط */
-/* @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap'); */
-
- @font-face {
+@font-face {
     font-family: "font_main";
     src: url("../assets/fonts/Cairo-Regular.ttf");
 }
@@ -20,20 +18,20 @@
     src: url("../assets/fonts/Cairo-Light.ttf");
 }
 
-
-
-
 /*! الألوان الرئيسية */
 :root {
     --white-color: #fff;
     --black-color: #000;
     --main-color: rgba(0, 179, 248, 1);
+    --text-color: rgba(255, 255, 255, 0.8);
+    --green-color: rgba(41, 206, 71, 1);
+    --red-color: rgba(222, 38, 38, 0.8);
     --text-color: rgba(126, 132, 143, 1);
 }
 
 body {
     direction: rtl;
-    background-color: var(--white-color);
+    color: var(--white-color);
     font-family: "font_main", Arial, Helvetica, sans-serif;
 }
 
@@ -91,12 +89,10 @@ h5,
 h6,
 p {
     margin: 0;
-    color: var(--white-color);
 }
 
 p {
-    font-size: clamp(10px, 2vw, 16px);
-    /* color: rgba(255, 255, 255, 0.95); */
+    color: var(--text-color);
 }
 
 img {
@@ -132,60 +128,37 @@ select {
 }
 
 
-.main-btn,
-.main-btn-BG {
-    width: 130px;
-    min-height: clamp(30px, 10vw, 40px);
-    /* min-height: clamp(30px, 5vh, 40px); */
-    border: 1px solid transparent;
-    border-radius: 8px;
-    transition: .5s;
-    font-size: clamp(12px, 2vw, 14px);
-    font-weight: bold;
+
+
+.head-title h2 {
+    font-size: 40px;
+    font-weight: 700;
+}
+.section-title h3 {
+    font-size: 32px;
+    font-weight: 700;
+}
+.head-title span,
+.section-title span {
+    color: var(--main-color);
+}
+/*! Buttons */
+.plus-btn,
+.edit-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+    gap: 5px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background:
+    linear-gradient(rgba(0, 179, 248, 1), rgba(11, 154, 222, 1), rgba(15, 130, 195, 1), rgba(6, 63, 117, 1)) padding-box,
+    linear-gradient(to right, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
+    border: 1px solid transparent;
 }
-.main-btn {
-    background-color: var(--white-color);
-    color: var(--main-color);
-    border-color: var(--main-color);
-    /* background: linear-gradient(to right, rgba(142, 121, 249, 1), rgba(85, 13, 168, 1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
-    /* border-color: rgba(147, 51, 205, 1); */
-}
-.main-btn-BG {
-    background-image: linear-gradient(to right, rgba(167, 71, 225, 1), rgba(111, 76, 193, 1));
-    color: var(--white-color);
-}
-.main-btn:hover {
-    background-color: var(--main-color);
-    color: var(--white-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px #3f22895b;
-}
-.main-btn-BG:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(147, 51, 205, 0.3);
-}
-.main-btn-BG.reject {
-    background-color: rgba(238, 46, 46, 1);
-    background-image: none;
-    border: 1px solid rgba(238, 46, 46, 1);
-}
-.main-btn-BG.reject:hover {
-    box-shadow: 0 10px 20px rgba(238, 46, 46, 0.3);
-}
-
-.text-clamp-2 {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.color-main {
-    color: var(--main-color);
+.edit-btn {
+    background:
+    linear-gradient(#000, #000, #000, #000) padding-box,
+    linear-gradient(to left, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
 }

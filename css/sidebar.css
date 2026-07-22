@@ -174,9 +174,6 @@
     margin-right: 60px !important;
 }
 
-
-
-
 @media (max-width: 768px) {
     .sidebar {
         right: -100%;
@@ -187,6 +184,16 @@
     /* responsive السايدبار اللى مش واخد كلاس  */
     .sidebar:not(.responsive) .active-indicator {
         opacity: 0 !important;
+    }
+
+    .sidebar ~ .main-content .content-data {
+        max-height: calc(100vh - 80px);
+        overflow: auto;
+        scrollbar-width: none;
+    }
+    .sidebar.responsive ~ .main-content {
+        padding: 20px 10px 0 0;
+        min-width: 100vw;
     }
 }
 
