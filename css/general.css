@@ -92,7 +92,8 @@ p {
 }
 
 p {
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(13px, 3vw, 16px);
 }
 
 img {
@@ -122,28 +123,26 @@ img {
     font-weight: 700;
 }
 
-
-
-
 .head-title h2 {
-    font-size: 40px;
+    font-size: clamp(25px, 3vw, 40px);
     font-weight: 700;
 }
 .section-title h3 {
-    font-size: 32px;
+    font-size: clamp(20px, 3vw, 32px);
     font-weight: 700;
 }
 .head-title span,
 .section-title span {
     color: var(--main-color);
 }
+
 /*! Buttons */
 .plus-btn,
 .edit-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 15px;
     font-size: 20px;
     padding: 10px 20px;
     border-radius: 30px;
@@ -151,9 +150,16 @@ img {
     linear-gradient(rgba(0, 179, 248, 1), rgba(11, 154, 222, 1), rgba(15, 130, 195, 1), rgba(6, 63, 117, 1)) padding-box,
     linear-gradient(to right, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
     border: 1px solid transparent;
+    color: var(--white-color);
 }
 .edit-btn {
     background:
     linear-gradient(#000, #000, #000, #000) padding-box,
     linear-gradient(to left, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
