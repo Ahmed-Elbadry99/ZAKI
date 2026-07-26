@@ -364,7 +364,7 @@
 
 /*! ====================================== Chats ======================================*/
 .chats .head-title {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 .group-input {
     position: relative;
@@ -1155,6 +1155,3 @@
 .customer-comments .comments-box .post-edit-actions .edit:hover {
     color: #00c853;
 }
-
-
-

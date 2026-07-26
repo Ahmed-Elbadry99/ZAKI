@@ -1,5 +1,3 @@
-    
-
 //! =============== Close & Open Sidebar-Responsive =============== //
 document.addEventListener("DOMContentLoaded", function () {
     const sidebar = document.querySelector(".sidebar");
@@ -61,6 +59,7 @@ document.querySelectorAll(".dots-dropdown-menu").forEach(menu => {
         e.stopPropagation();
     });
 });
+
 document.addEventListener("click", () => {
     document.querySelectorAll(".dropdown.show").forEach(item => {
         item.classList.remove("show");
@@ -131,6 +130,7 @@ document.querySelectorAll(".platform-box.close").forEach(item => {
         e.preventDefault();
     });
 });
+
 document.querySelectorAll(".platform-box.close .edit-btn").forEach(btn => {
     btn.addEventListener("click", (e) => {
         e.preventDefault();
