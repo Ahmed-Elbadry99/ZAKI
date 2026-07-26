@@ -1,3 +1,4 @@
+    
 
 //! =============== Close & Open Sidebar-Responsive =============== //
 document.addEventListener("DOMContentLoaded", function () {
@@ -127,6 +128,11 @@ document.querySelectorAll(".platform-box").forEach(box => {
 
 document.querySelectorAll(".platform-box.close").forEach(item => {
     item.addEventListener("click", (e) => {
+        e.preventDefault();
+    });
+});
+document.querySelectorAll(".platform-box.close .edit-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
         e.preventDefault();
     });
 });
@@ -463,27 +469,31 @@ if (fileInput) {
 // عرض المعاينة
 function renderPreview() {
     filePreview.innerHTML = "";
+
     selectedFiles.forEach((file, index) => {
         const url = URL.createObjectURL(file);
+
         filePreview.innerHTML += `
-        <div class="preview-item">
-            <button 
-            class="remove-file" 
-            onclick="removeFile(${index})">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            ${file.type.startsWith("image")
-                ?
-                `<img src="${url}">`
-                :
-                `<video src="${url}" controls></video>`
-            }
-        </div>
+            <div class="preview-item">
+                <button class="remove-file" onclick="removeFile(${index})">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+                ${
+                    file.type.startsWith("image")
+                    ?
+                    `<img src="${url}" alt="preview">`
+                    :
+                    `<video src="${url}" controls></video>`
+                }
+            </div>
         `;
     });
 
     if (selectedFiles.length) {
         filePreview.classList.add("active");
+    } else {
+        filePreview.classList.remove("active");
     }
 }
 
@@ -491,9 +501,9 @@ function renderPreview() {
 function removeFile(index) {
     selectedFiles.splice(index, 1);
     renderPreview();
+
     if (selectedFiles.length === 0) {
         fileInput.value = "";
-        filePreview.classList.remove("active");
     }
 }
 
