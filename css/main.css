@@ -502,6 +502,11 @@
     background: #cbd5e1;
     border-radius: 10px;
 }
+.chats .chat-deatails .input-wrapper:has(.file-preview.active) {
+    padding: 20px;
+    flex-direction: column;
+    align-items: end;
+}
 
 .chats .conversation-list .conversation-card {
     position: relative;
@@ -894,6 +899,8 @@
     width: fit-content;
     gap: 10px;
     flex-wrap: wrap;
+    height: 100px;
+    overflow: auto;
 }
 .chats .chat-deatails .file-preview.active {
     display: flex;
@@ -1156,3 +1163,7 @@
 .customer-comments .comments-box .post-edit-actions .edit:hover {
     color: #00c853;
 }
+
+
+
+
