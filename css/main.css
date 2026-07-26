@@ -246,7 +246,7 @@
 .communication .platform-box figure img {
     width: 45px;
     height: 45px;
-    border-radius: 50%;
+    border-radius: 10px;
     object-fit: contain;
 }
 .communication .platform-box .dots-menu {
@@ -596,6 +596,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 15px;
+    width: fit-content;
 }
 
 .chats .actions .plus-btn,
@@ -644,6 +645,7 @@
     padding: 20px 25px;
     height: 100%;
     min-height: 700px;
+    max-height: 100%;
 }
 .chats .form-content .content {
     height: calc(100% - 100px);
@@ -677,7 +679,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 600px;
+    height: 650px;
 }
 
 .chats .chat-deatails.active {
@@ -771,13 +773,35 @@
     flex-direction: column;
     gap: 10px;
 }
-.chats .chat-deatails .body .myMessage .chat-image {
+.chats .chat-deatails .body .message .badge-name {
+    border-radius: 30px;
+    padding: 7px 13px;
+    width: fit-content;
+    background-color: transparent;
+    color: var(--white-color);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(0 179 248 / 16%), rgb(16 46 58)) padding-box, linear-gradient(to left, rgba(0, 179, 248, 1), rgba(11, 154, 222, 1), rgba(15, 130, 195, 1), rgba(6, 63, 117, 1)) border-box;
+    border: 2px solid transparent;
+    font-size: clamp(10px, 3vw, 16px);
+}
+.chats .chat-deatails .body .myMessage .chat-image,
+.chats .chat-deatails .body .myMessage .chat-video {
     width: 150px;
     height: 100px;
     border-radius: 10px;
 }
 .chats .chat-deatails .body .myMessage {
     border-radius: 0 15px 15px 15px;
+}
+.chats .chat-deatails .body .myMessage .images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .chats .chat-deatails .body .message p,
@@ -802,12 +826,13 @@
 
 .chats .chat-deatails .inputSend .input-wrapper {
     display: flex;
+    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 70px);
     border: 1px solid rgb(0 179 248 / 58%);
     border-radius: 10px;
-    padding-inline: 20px;
+    padding: 0 20px;
 }
 .chats .chat-deatails .inputSend .input-wrapper .input-icons {
     display: flex;
@@ -853,12 +878,13 @@
     display: none;
     position: relative;
     width: fit-content;
-    margin-bottom: 10px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .chats .chat-deatails .file-preview.active {
-    display: block;
+    display: flex;
 }
-.chats .chat-deatails.file-preview img,
+.chats .chat-deatails .file-preview img,
 .chats .chat-deatails .file-preview video {
     width: 90px;
     height: 90px;
@@ -876,6 +902,8 @@
     align-items: center;
     font-size: 13px;
     color: var(--white-color);
+    position: absolute;
+    border-radius: 50%;
 }
 .chats .chat-deatails .audio-message audio{
     height:40px;

@@ -37,17 +37,12 @@ if (activeItem && linksScroll) {
     });
 }
 
-
-
-
-
-
-
-
 //! =============== Dots Dropdown-Menu =============== //
 document.querySelectorAll(".dots-dropdown-menu").forEach(menu => {
     const dots = menu.querySelector(".dots-menu");
     const dropdown = menu.querySelector(".dropdown");
+
+    if (!dots || !dropdown) return;
 
     dots.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -65,7 +60,6 @@ document.querySelectorAll(".dots-dropdown-menu").forEach(menu => {
         e.stopPropagation();
     });
 });
-
 document.addEventListener("click", () => {
     document.querySelectorAll(".dropdown.show").forEach(item => {
         item.classList.remove("show");
@@ -243,16 +237,11 @@ function sendMessage() {
     messagesBox.innerHTML += `
     <div class="myMessage-box">
         <div class="myMessage">
-            ${attachments}
-            ${text
-            ?
-            `<p>${text}</p>`
-            :
-            ""
-        }
-            <span class="time">
-                ${time}
-            </span>
+            <div class="images">
+                ${attachments}
+            </div>
+            ${text ? `<p>${text}</p>` : ""}
+            <span class="time"> ${time} </span>
         </div>
 
         <figure>
@@ -301,30 +290,79 @@ let audioURL = null;
 if (micBtn && recordUI && sendBtn) {
     micBtn.addEventListener("click", async () => {
         if (!isRecording) {
-            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-            mediaRecorder = new MediaRecorder(stream);
-            audioChunks = [];
 
-            mediaRecorder.ondataavailable = (e) => {
-                audioChunks.push(e.data);
-            };
 
-            mediaRecorder.onstop = () => {
-                const audioBlob = new Blob(audioChunks, {
-                    type: "audio/webm"
+            try {
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    alert("المتصفح لا يدعم تسجيل الصوت");
+                    return;
+                }
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    audio: true
                 });
-                audioURL = URL.createObjectURL(audioBlob);
-            };
 
-            mediaRecorder.start();
-            isRecording = true;
-            micControl.innerHTML = `<i class="fa-solid fa-stop"></i>`;
-            recordUI.classList.remove("d-none");
-            sendBtn.classList.add("d-none");
-        } else {
-            mediaRecorder.stop();
-            isRecording = false;
-            micControl.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = (e) => {
+                    audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    const audioBlob = new Blob(audioChunks, {
+                        type: "audio/webm"
+                    });
+                    audioURL = URL.createObjectURL(audioBlob);
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+
+                micControl.innerHTML = `<i class="fa-solid fa-stop"></i>`;
+                recordUI.classList.remove("d-none");
+                sendBtn.classList.add("d-none");
+
+            } catch (error) {
+                console.log(error);
+
+                alert("لا يوجد ميكروفون متاح أو لم يتم السماح باستخدامه");
+            }
+
+
+
+
+
+
+
+
+
+
+
+            // const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+            //     mediaRecorder = new MediaRecorder(stream);
+            //     audioChunks = [];
+
+            //     mediaRecorder.ondataavailable = (e) => {
+            //         audioChunks.push(e.data);
+            //     };
+
+            //     mediaRecorder.onstop = () => {
+            //         const audioBlob = new Blob(audioChunks, {
+            //             type: "audio/webm"
+            //         });
+            //         audioURL = URL.createObjectURL(audioBlob);
+            //     };
+
+            //     mediaRecorder.start();
+            //     isRecording = true;
+            //     micControl.innerHTML = `<i class="fa-solid fa-stop"></i>`;
+            //     recordUI.classList.remove("d-none");
+            //     sendBtn.classList.add("d-none");
+            // } else {
+            //     mediaRecorder.stop();
+            //     isRecording = false;
+            //     micControl.innerHTML = `<i class="fa-solid fa-microphone"></i>`;
         }
     });
 }
