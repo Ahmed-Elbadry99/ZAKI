@@ -81,8 +81,7 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
 }
-
-.dropdown-item .item-icon{
+.page-header-actions .dropdown-item .item-icon{
   width: 16px;
   height: 16px;
   flex-shrink: 0;
@@ -112,14 +111,14 @@ cursor: pointer;
     font-family: inherit;
   }
 
-  .dropdown.open .arrow-icon{
+  .toolbar .filters .dropdown.open .arrow-icon{
     transform: rotate(180deg);
   }
-  .arrow-icon{
+  .toolbar .filters .arrow-icon{
     transition: transform .15s ease;
   }
 
-  .dropdown-menu{
+  .toolbar .filters .dropdown-menu{
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -132,11 +131,11 @@ cursor: pointer;
     z-index: 20;
     display: none;
   }
-  .dropdown.open .dropdown-menu{
+  .toolbar .filters .dropdown.open .dropdown-menu{
     display: block;
   }
 
-  .dropdown-item{
+  .toolbar .filters .dropdown-item{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -152,18 +151,18 @@ cursor: pointer;
     border-radius: 8px;
     cursor: pointer;
   }
-  .dropdown-item:hover{
+  .toolbar .filters .dropdown-item:hover{
     background: var(--main-color);
   }
-  .dropdown-item.active{
+  .toolbar .filters .dropdown-item.active{
     color: #00E5A8;
   }
-  .dropdown-item.active::after{
+  .toolbar .filters .dropdown-item.active::after{
     content: "✓";
     font-size: 12px;
   }
 
-  .dropdown-sep{
+  .toolbar .filters .dropdown-sep{
     height: 1px;
     background: #1c2436;
     margin: 6px 4px;
@@ -527,7 +526,7 @@ tbody td:last-child{
   width: 12px;
   height: 12px;
 }
-.dropdown.open .select-btn{
+.form-group .dropdown.open .select-btn{
   border-color: rgba(0, 178, 248, 0.281);
 }
 
@@ -784,12 +783,12 @@ tbody td:last-child{
 
 
   /* contacts page */
-   .dropdown-menu .item-icon {
+   .page-header-actions .dropdown-menu .item-icon {
     justify-content: start;
     align-items: center;
     gap: 8px;
    }
-  .dropdown-menu .item-icon img{
+  .page-header-actions .dropdown-menu .item-icon img{
     width: 20px;
     height: 20px;
   }
