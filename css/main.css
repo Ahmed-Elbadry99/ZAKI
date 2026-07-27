@@ -329,8 +329,8 @@
 /* Switch */
 .dots-dropdown-menu .switch {
     position: relative;
-    width: 20px;
-    height: 12px;
+    width: 35px;
+    height: 20px;
 }
 .dots-dropdown-menu .switch input {
     display: none;
@@ -346,11 +346,11 @@
 .dots-dropdown-menu .slider::before {
     content: "";
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     background: var(--white-color);
     border-radius: 50%;
-    top: 1px;
+    top: 0;
     right: 1px;
     transition: .3s;
 }
@@ -359,7 +359,7 @@
     background: var(--green-color)
 }
 .dots-dropdown-menu .switch input:checked+.slider::before {
-    transform: translateX(-8px);
+    transform: translateX(-13px);
 }
 
 /*! ====================================== Chats ======================================*/
@@ -688,7 +688,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    height: 650px;
 }
 
 .chats .chat-deatails.active {
@@ -782,12 +782,12 @@
     max-width: 83%;
     border-radius: 15px 0 15px 15px;
     margin-bottom: 15px;
-    padding: 15px;
+    padding: 10px 15px;
     width: fit-content;
     padding-bottom: 5px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
 
     overflow-wrap: break-word;
     word-break: break-word;
@@ -912,7 +912,7 @@
     width: fit-content;
     gap: 10px;
     flex-wrap: wrap;
-    height: 100px;
+    height: 80px;
     overflow: auto;
 }
 .chats .chat-deatails .file-preview.active {
@@ -931,7 +931,7 @@
 .chats .chat-deatails .inputSend button.remove-file {
     position: absolute;
     top: 5px;
-    right: 5px;
+    right: 0;
     width: 25px;
     height: 25px;
     border: none;
@@ -1180,3 +1180,89 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.chats .chat-deatails .file-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    max-width: 260px;
+    margin: 6px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+
+.chats .chat-deatails .file-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.chats .chat-deatails .file-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    background: #ffe5e5;
+    color: #e63946;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.chats .chat-deatails .file-details {
+    flex: 1;
+    min-width: 0; /* عشان ال overflow يشتغل صح */
+    display: flex;
+    flex-direction: column;
+}
+
+.chats .chat-deatails .file-details h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chats .chat-deatails .file-details span {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.chats .chat-deatails .file-action {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: #f1f1f1;
+    color: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.chats .chat-deatails .file-action:hover {
+    background: #e63946;
+    color: var(--white-color);
+}
