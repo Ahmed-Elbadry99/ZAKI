@@ -415,3 +415,105 @@ if(document.getElementById('cancelSubOverlay')){
     if (e.target === this) closeCancelSubModal();
   });
 }
+
+
+// إعدادات مشتركة للشكل والألوان عشان تبقى متسقة في كل الشارتس
+Chart.defaults.font.family = "Cairo, sans-serif";
+Chart.defaults.color = "#8b93a8";
+
+const gridColor = "rgba(255,255,255,0.05)";
+
+/* 1) رسائل الذكاء الاصطناعي — Bar Chart */
+new Chart(document.getElementById('aiMessagesChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+    datasets: [{
+      data: [55, 40, 55, 55, 75, 55, 40, 55, 55, 75],
+      backgroundColor: '#2E9CE0',
+      borderRadius: 6,
+      barThickness: 50,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { stepSize: 25 } }
+    }
+  }
+});
+
+/* 2) عدد المحادثات — Line/Area Chart */
+new Chart(document.getElementById('conversationsChart'), {
+  type: 'line',
+  data: {
+    labels: ['', '', '', '', '', '', '', ''],
+    datasets: [{
+      data: [20, 45, 15, 60, 30, 70, 35, 55],
+      borderColor: '#2E9CE0',
+      backgroundColor: 'rgba(46,156,224,0.25)',
+      borderWidth: 2,
+      fill: true,
+      tension: 0.4,
+      pointRadius: 5,
+      pointBackgroundColor: '#2E9CE0',
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: gridColor } }
+    }
+  }
+});
+
+/* 3) المستخدمين القاضين — Donut Chart */
+new Chart(document.getElementById('usersDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['عدد المستخدمين القاضين', 'عدد المستخدمين السعداء'],
+    datasets: [{
+      data: [30, 70],
+      backgroundColor: ['#00B7FF', '#0a2540'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '72%',
+    plugins: { legend: { display: false } }
+  }
+});
+
+/* 4) العملاء المستخلصين — Horizontal Bar Chart */
+new Chart(document.getElementById('clientsBarChart'), {
+  type: 'bar',
+  data: {
+    labels: ['', '', ''],
+    datasets: [{
+      data: [55, 25, 70],
+      backgroundColor: '#2E9CE0',
+      borderRadius: 6,
+      barThickness: 40,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+

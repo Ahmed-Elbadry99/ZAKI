@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
+    <title>My subscription details</title>
     <link
       rel="shortcut icon"
       href="./assets/images/logo.svg"
@@ -25,10 +25,12 @@
     <!-- Sidebar Css -->
     <link rel="stylesheet" href="./css/sidebar.css" />
     <!-- Main Css -->
+    <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/main.css" />
+    <!-- links css -->
+    <link rel="stylesheet" href="./css/nour.css" />
     <link rel="stylesheet" href="./css/register.css" />
     <!-- General css -->
-    <link rel="stylesheet" href="./css/general.css" />
     <!-- Responsive -->
     <link rel="stylesheet" href="./css/responsive.css" />
   </head>
@@ -172,56 +174,171 @@
           </nav>
         </header>
 
-        <section class="content-data">
-          <section class="create-steps">
-            <div class="steps-container">
-              <div class="progress-line" style="--progress: 33.33%"></div>
-              <div class="step-item">
-                <p>إنشاء</p>
-              </div>
-              <div class="step-item">
-                <p>معرفة</p>
-              </div>
-              <div class="step-item">
-                <p>اختبار</p>
-              </div>
-              <div class="step-item">
-                <p>ربط</p>
+        <section class="content-data pages">
+          <!-- Welcome banner -->
+          <div class="welcome-banner">
+            <div class="head-title">
+              <h2>أهلاً بكم, في <span>شركة ذكي...</span></h2>
+            </div>
+            <button class="main-btn" type="button">
+              <span> + وكيل جديد </span>
+              <img src="./assets/images/arrow-left.svg" alt="" />
+            </button>
+          </div>
+
+          <!-- Restart -->
+          <div class="analysis-title">
+            <div class="head-title">
+              <h2>التحليلات</h2>
+            </div>
+            <button class="main-btn time-btn" type="button">
+              <span> النطاق الزمني</span>
+              <img src="./assets/images/arrow-left.svg" alt="" />
+            </button>
+          </div>
+
+          <div class="row g-4 analysis">
+            <div class="col-12 col-lg-3 col-md-6">
+              <div class="subscription-card">
+                <div class="subscription-card-header">
+                  <div class="subscription-card-icon">
+                    <img
+                      src="./assets/images/chat.svg"
+                      alt="subscription-card-icon"
+                    />
+                  </div>
+                  <h3>عدد المحادثات</h3>
+                </div>
+                <div class="subscription-card-footer">
+                  <p>0</p>
+                </div>
               </div>
             </div>
-          </section>
-          <section class="create-steps-content">
-            <form action="">
-                <div class="form-group">
-                    <h2>
-                        اسم مساعدك 
-                        <span>الذكي</span>
-                    </h2>
-                    <label for="name">  اسم شركتك او اسم علامتك التجارية </label>
-                    <input type="text" name="name" id="name" placeholder="مثال : اسم شركتك">
+
+            <div class="col-12 col-lg-3 col-md-6">
+              <div class="subscription-card">
+                <div class="subscription-card-header">
+                  <div class="subscription-card-icon">
+                    <img
+                      src="./assets/images/messages.svg"
+                      alt="subscription-card-icon"
+                    />
+                  </div>
+                  <h3>عدد الرسائل الذكاء الاصطناعي</h3>
                 </div>
-                <div class="form-group">
-                    <h2>
-                        أهداف مساعدك   
-                        <span>الذكي</span>
-                    </h2>
-                    <label for="name">  الغرض من مساعدك الذكي </label>
-                    <select name="name" id="name">
-                        <option value="" disabled selected>اختر الغرض</option>
-                        <option value="1">الغرض من مساعدك الذكي</option>
-                        <option value="2">الغرض من مساعدك الذكي</option>
-                        <option value="3">الغرض من مساعدك الذكي</option>
-                        <option value="4">الغرض من مساعدك الذكي</option>
-                        <option value="5">الغرض من مساعدك الذكي</option>
-                    </select>
+                <div class="subscription-card-footer">
+                  <p>0</p>
                 </div>
-                 
-            </form>
-          </section>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 col-md-6">
+              <div class="subscription-card">
+                <div class="subscription-card-header">
+                  <div class="subscription-card-icon">
+                    <img
+                      src="./assets/images/side7.svg"
+                      alt="subscription-card-icon"
+                    />
+                  </div>
+                  <h3>عدد العملاء المستخلصين</h3>
+                </div>
+                <div class="subscription-card-footer">
+                  <p>0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-3 col-md-6">
+              <div class="subscription-card">
+                <div class="subscription-card-header">
+                  <div class="subscription-card-icon">
+                    <img
+                      src="./assets/images/angry.svg"
+                      alt="subscription-card-icon"
+                    />
+                  </div>
+                  <h3>عدد المستخدمين الغاضبين</h3>
+                </div>
+                <div class="subscription-card-footer">
+                  <p>0%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="row g-4 charts-grid">
+
+            <div class="col-12 col-lg-6 col-md-6">
+              <div class="chart-card">
+                <h3>عدد المحادثات</h3>
+                <div class="chart-wrap">
+                  <canvas id="conversationsChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="col-12 col-lg-6 col-md-6">
+              <div class="chart-card">
+                <h3>عدد رسائل الذكاء الاصطناعي</h3>
+                <div class="chart-wrap">
+                  <canvas id="aiMessagesChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+            
+
+           
+
+            <div class="col-12 col-lg-6 col-md-6">
+              <div class="chart-card">
+                <h3>عدد العملاء المستخلصين</h3>
+                <div class="chart-wrap">
+                  <canvas id="clientsBarChart"></canvas>
+                </div>
+              </div>
+            </div>
+
+
+             <div class="col-12 col-lg-6 col-md-6">
+              <div class="chart-card">
+                <h3>عدد المستخدمين الغاضبين</h3>
+                <div class="donut-wrap">
+                    <div class="donut-legend">
+                    <div class="legend-item">
+                      <span
+                        class="legend-dot"
+                        style="background: #00b7ff"
+                      ></span>
+                      عدد المستخدمين القاضين
+                    </div>
+                    <div class="legend-item">
+                      <span
+                        class="legend-dot"
+                        style="background: #0a2540"
+                      ></span>
+                      عدد المستخدمين السعداء
+                    </div>
+                  </div>
+                  
+                  <div class="donut-chart-box">
+                    <canvas id="usersDonutChart"></canvas>
+                    <div class="donut-center-label">30%</div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
     <!-- Owl library js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -231,5 +348,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- index js -->
     <script src="./js/index.js"></script>
+    <!-- our js -->
+    <script src="./js/nour.js"></script>
   </body>
 </html>

@@ -1,0 +1,36 @@
+body {
+    text-align: left;
+    direction: ltr;
+}
+
+
+.dots-dropdown-menu .dropdown {
+    right: 0;
+    left: unset;
+}
+.chats .avatar .social-icon {
+    right: -5px;
+    left: unset;
+}
+.chats .chat-deatails .inputSend .send-btn {
+    right: 5px;
+    left: unset;
+}
+.chats .chat-deatails .body .message {
+    border-radius: 0 15px 15px 15px;
+}
+.chats .chat-deatails .body .myMessage {
+    border-radius: 15px 0 15px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

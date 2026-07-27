@@ -1,33 +1,37 @@
 
 @media (max-width: 991px) {
-   
 }
 
 @media (max-width: 768px) {
+    .main-content .content-data{
+        padding: 30px 10px;
+    }
     .main-content {
         width: 100%;
         margin-right: 0;
         padding: 20px 10px 0 10px;
     }
-    /*? ******** Sidebar-Responsive ********/
-    .sidebar ~ .main-content .content-data {
-        max-height: calc(100vh - 80px);
-        overflow: auto;
-        scrollbar-width: none;
-    }
-    .sidebar.responsive ~ .main-content {
-        padding: 20px 10px 0 0;
-        min-width: 100vw;
-    }
-
 }
 
 @media (max-width: 575px) {
-   
+    .plus-btn,
+    .edit-btn {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    .chats .user-info {
+        flex-direction: column;
+        justify-content: center;
+    }
+.communication .platform-box:not(.head) {
+            flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
 }
 
 @media (max-width: 492px) {
-    
+
 }
 
 @media (max-width: 386px) {
