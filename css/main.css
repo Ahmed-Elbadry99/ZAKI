@@ -721,6 +721,12 @@
     border: 1px solid var(--main-color);
     border-radius: 50%;
     padding: 7px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
 }
 .chats .chat-deatails .messagesBox figure img {
     border-radius: 50%;
@@ -772,7 +778,7 @@
 .chats .chat-deatails .body .message,
 .chats .chat-deatails .body .myMessage {
     background-color: #00425C;
-    max-width: 90%;
+    max-width: 83%;
     border-radius: 15px 0 15px 15px;
     margin-bottom: 15px;
     padding: 15px;
@@ -796,7 +802,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(rgb(0 179 248 / 16%), rgb(16 46 58)) padding-box, linear-gradient(to left, rgba(0, 179, 248, 1), rgba(11, 154, 222, 1), rgba(15, 130, 195, 1), rgba(6, 63, 117, 1)) border-box;
+    background: linear-gradient(rgb(1, 44, 61), rgba(0, 0, 0, 0.5)) padding-box,  linear-gradient(45deg, rgba(5, 139, 192, 0.075), rgba(11, 155, 222, 0.541), rgba(15, 130, 195, 1), rgba(11, 154, 222, 1), rgba(11, 154, 222, 1)) border-box;
     border: 2px solid transparent;
     font-size: clamp(10px, 3vw, 16px);
 }
@@ -808,6 +814,7 @@
 }
 .chats .chat-deatails .body .myMessage {
     border-radius: 0 15px 15px 15px;
+    background-color: rgba(0, 123, 170, 1);
 }
 .chats .chat-deatails .body .myMessage .images {
     display: flex;
