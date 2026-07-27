@@ -175,14 +175,14 @@
         <section class="content-data">
           <section class="create-steps">
             <div class="steps-container">
-              <div class="progress-line" style="--progress: 33.33%"></div>
-              <div class="step-item">
+              <div class="progress-line" ></div>
+              <div class="step-item active ">
                 <p>إنشاء</p>
               </div>
-              <div class="step-item">
+              <div class="step-item active">
                 <p>معرفة</p>
               </div>
-              <div class="step-item">
+              <div class="step-item ">
                 <p>اختبار</p>
               </div>
               <div class="step-item">
@@ -192,6 +192,7 @@
           </section>
           <section class="create-steps-content">
             <form action="">
+              <div class="form-container">
                 <div class="form-group">
                     <h2>
                         اسم مساعدك 
@@ -206,16 +207,29 @@
                         <span>الذكي</span>
                     </h2>
                     <label for="name">  الغرض من مساعدك الذكي </label>
+                    <div class="select-container">
                     <select name="name" id="name">
-                        <option value="" disabled selected>اختر الغرض</option>
-                        <option value="1">الغرض من مساعدك الذكي</option>
-                        <option value="2">الغرض من مساعدك الذكي</option>
-                        <option value="3">الغرض من مساعدك الذكي</option>
-                        <option value="4">الغرض من مساعدك الذكي</option>
-                        <option value="5">الغرض من مساعدك الذكي</option>
-                    </select>
+                          <option value="" disabled selected>اختر الغرض</option>
+                          <option value="1">الغرض من مساعدك الذكي</option>
+                          <option value="2">الغرض من مساعدك الذكي</option>
+                          <option value="3">الغرض من مساعدك الذكي</option>
+                          <option value="4">الغرض من مساعدك الذكي</option>
+                          <option value="5">الغرض من مساعدك الذكي</option>
+                        </select>
+                    </div>
                 </div>
-                 
+              </div>
+              <div class="actions">
+                <a href="#" class="back plus-btn">
+                  
+                  <img src="./assets/images/arrow-circle.svg" alt="arrow-circle">
+                  <span>رجوع</span>
+                </a>
+                <a href="#" class="next plus-btn">
+                  <span>معرفة</span>
+                  <img src="./assets/images/arrow-circle.svg" alt="arrow-circle">
+                </a>
+              </div>
             </form>
           </section>
         </section>

@@ -162,3 +162,105 @@ document.addEventListener("click", () => {
         select.classList.remove("active");
     });
 });
+
+
+
+
+//! =============== Create Steps =============== //
+
+const steps = document.querySelectorAll(".create-steps .step-item");
+const progressLine = document.querySelector(".create-steps .progress-line");
+let activeStepNumber =0;
+
+
+if(steps.length > 0){
+    steps.forEach(step => {
+    
+        if(step.classList.contains("active")){
+            activeStepNumber++;
+        }
+    });
+
+    if (activeStepNumber === 1) {
+        progressLine.style.setProperty("--before-width", "33.33%");
+        progressLine.style.setProperty("--after-width", "66.66%");
+    }
+
+    if (activeStepNumber === 2) {
+        progressLine.style.setProperty("--before-width", "66.66%");
+        progressLine.style.setProperty("--after-width", "33.33%");
+    }
+
+    if (activeStepNumber >= 3) {
+        progressLine.style.setProperty("--before-width", "100%");
+        progressLine.style.setProperty("--after-width", "0%");
+    }
+}
+
+// toggle collapse with js without bootstrap
+
+
+const collapseBtns = document.querySelectorAll("[data-colapse]");
+
+collapseBtns.forEach(btn => {
+    btn.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const target = document.getElementById(this.dataset.colapse);
+
+        if (!target) return;
+
+        target.classList.toggle("active");
+    });
+});
+
+
+//! =============== Upload Data Box =============== //
+
+const uploadDataBoxes = document.querySelectorAll(".upload-data-box");
+
+uploadDataBoxes.forEach(box => {
+    const input = box.querySelector("input[type='file']");
+    const filesList = box.querySelector(".files-list");
+
+    box.addEventListener("click", (e) => {
+        if (!e.target.closest(".file-item")) {
+            input.click();
+        }
+    });
+
+    input.addEventListener("change", () => {
+        [...input.files].forEach(file => {
+
+            const item = document.createElement("div");
+            item.className = "file-item";
+
+            const preview = document.createElement("img");
+            preview.className = "preview";
+
+            if (file.type.startsWith("image/")) {
+                preview.src = URL.createObjectURL(file);
+            } else {
+                preview.src = "./assets/images/file.svg";
+            }
+
+            const name = document.createElement("span");
+            name.textContent = file.name;
+
+            const remove = document.createElement("button");
+            remove.className = "remove-file";
+            remove.innerHTML = "&times;";
+
+            remove.addEventListener("click", e => {
+                e.stopPropagation();
+                item.remove();
+            });
+
+            item.append(remove, preview, name);
+            filesList.appendChild(item);
+        });
+
+        // يسمح باختيار نفس الملف مرة أخرى
+        input.value = "";
+    });
+});

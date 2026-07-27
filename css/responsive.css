@@ -12,9 +12,51 @@
 
 @media (max-width: 575px) {
 
+    .upload-data-box label,
+    .add-data-header label{
+        font-size: 14px;
+    }
+
+    .content-data h2{
+        font-size: 18px;
+    }
+
+    .add-data-header-icon img{
+        width: 20px;
+        height: 20px;
+    }
 }
 
-@media (max-width: 492px) {
+@media (max-width: 425px) {
+
+
+
+
+    /*  */
+
+    .create-steps .steps-container .step-item p{
+        font-size: 12px;
+    }   
+    .create-steps .steps-container .step-item {
+        width: 45px;
+        height: 45px;
+    }
+
+    .create-steps-content form .form-group h2 {
+        font-size: 20px;
+    }
+    .create-steps-content form .form-group h2 span,
+    .create-steps-content form .form-group  label,
+    .create-steps-content form .form-group  input,
+    .add-data-header label,
+    .upload-data-box label{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+  
+  
+
 
 }
 

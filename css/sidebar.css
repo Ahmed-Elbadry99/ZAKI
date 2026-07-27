@@ -187,7 +187,6 @@
     }
 
     .sidebar ~ .main-content .content-data {
-        max-height: calc(100vh - 80px);
         overflow: auto;
         scrollbar-width: none;
     }
@@ -195,5 +194,15 @@
         padding: 20px 10px 0 0;
         min-width: 100vw;
     }
+
+
 }
+
+@media (max-width: 425px) {
+    
+    .sidebar ~ .main-content .content-data{
+        min-height: calc(100vh - 140px);
+    }
+}
+
 
