@@ -3,6 +3,9 @@
 }
 
 @media (max-width: 768px) {
+    .main-content .content-data{
+        padding: 30px 10px;
+    }
     .main-content {
         width: 100%;
         margin-right: 0;
@@ -24,6 +27,30 @@
     .add-data-header-icon img{
         width: 20px;
         height: 20px;
+
+    }
+    .plus-btn,
+    .edit-btn {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    .chats .user-info {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .communication .platform-box:not(.head) {
+        flex-direction: column;
+        align-items: start;
+        gap: 15px;
+    }
+    .chats .form-content {
+        padding: 20px 10px;
+    }
+    .chats .chat-deatails .inputSend textarea {
+        font-size: 12px;
+    }
+    .chats .chat-deatails .inputSend .input-wrapper {
+        padding: 0 10px;
     }
 }
 
