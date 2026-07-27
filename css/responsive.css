@@ -23,10 +23,19 @@
         flex-direction: column;
         justify-content: center;
     }
-.communication .platform-box:not(.head) {
-            flex-direction: column;
+    .communication .platform-box:not(.head) {
+        flex-direction: column;
         align-items: start;
         gap: 15px;
+    }
+    .chats .form-content {
+        padding: 20px 10px;
+    }
+    .chats .chat-deatails .inputSend textarea {
+        font-size: 12px;
+    }
+    .chats .chat-deatails .inputSend .input-wrapper {
+        padding: 0 10px;
     }
 }
 

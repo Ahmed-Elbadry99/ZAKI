@@ -166,6 +166,99 @@ select {
     linear-gradient(to left, rgba(0, 179, 248, 1), rgba(0, 178, 248, 0.329)) border-box;
 }
 
+
+
+
+
+
+
+
+
+/* 
+.plus-btn,
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--white-color);
+    transition: .35s ease;
+    cursor: pointer;
+
+    background:
+        linear-gradient(rgba(0,179,248,1), rgba(11,154,222,1), rgba(15,130,195,1), rgba(6,63,117,1)) padding-box,
+        linear-gradient(to right, rgba(0,179,248,1), rgba(0,178,248,.329)) border-box;
+    border: 1px solid transparent;
+}
+
+.edit-btn{
+    background:
+        linear-gradient(#000,#000) padding-box,
+        linear-gradient(to left, rgba(0,179,248,1), rgba(0,178,248,.329)) border-box;
+}
+.plus-btn,
+.edit-btn{
+    position: relative;
+    overflow: hidden;
+    transition: .35s ease;
+}
+
+.plus-btn::before,
+.edit-btn::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,.15) 45%,
+        rgba(255,255,255,.35) 50%,
+        rgba(255,255,255,.15) 55%,
+        transparent 80%
+    );
+    transform: translateX(-150%);
+    transition: transform .7s ease;
+    pointer-events: none;
+}
+
+.plus-btn:hover,
+.edit-btn:hover{
+    transform: translateY(-2px);
+    border-color: #00b3f8;
+    box-shadow:
+        0 0 10px rgba(0,179,248,.4),
+        0 0 25px rgba(0,179,248,.25),
+        inset 0 0 10px rgba(255,255,255,.05);
+}
+
+.plus-btn:hover::before,
+.edit-btn:hover::before{
+    transform: translateX(150%);
+}
+
+.plus-btn:hover i,
+.edit-btn:hover i{
+    transform: scale(1.15);
+    color: #fff;
+}
+
+.plus-btn i,
+.edit-btn i{
+    transition: .35s;
+} */
+
+
+
+
+
+
+
+
+
 .cursor-pointer {
     cursor: pointer;
 }
