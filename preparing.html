@@ -173,10 +173,89 @@
         </header>
 
         <section class="content-data">
-          <h2>
-            إعداد
-            <span>ذكي</span>
-          </h2>
+          <div class="page-header">
+            <div class="page-header-title">
+              <h1><span> إعداد </span>ذكي</h1>
+            </div>
+
+            <div class="page-header-actions">
+              <button
+                class="main-btn"
+                type="button"
+                onclick="openAddClientModal()"
+              >
+                <span>إضافة عميل</span>
+                <img src="./assets/images/plus-circle.svg" alt="arrow-circle" />
+              </button>
+
+              <div class="dropdown">
+                <button
+                  class="more-btn-icon"
+                  type="button"
+                  onclick="toggleRowDropdown(this)"
+                >
+                  <img src="./assets/images/dots.svg" alt="more" />
+                </button>
+
+                <div class="dropdown-menu">
+                  <button
+                    class="dropdown-item"
+                    onclick="handleMoreAction(this, 'استخراج')"
+                  >
+                    <img
+                      src="./assets/images/export.svg"
+                      alt=""
+                      class="item-icon"
+                    />
+                    <span>استخراج</span>
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      handleMoreAction(this, 'تعديل الأعمدة');
+                      openEditColumnsModal();
+                    "
+                  >
+                    <img
+                      src="./assets/images/columns.svg"
+                      alt=""
+                      class="item-icon"
+                    />
+                    <span>تعديل الأعمدة</span>
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      handleMoreAction(this, 'تعديل الحالات');
+                      openEditStatusesModal();
+                    "
+                  >
+                    <img
+                      src="./assets/images/statuses.svg"
+                      alt=""
+                      class="item-icon"
+                    />
+                    <span>تعديل الحالات</span>
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      handleMoreAction(this, 'تعليمات الذكاء الاصطناعي');
+                      openAiInstructionsModal();
+                    "
+                  >
+                    <img
+                      src="./assets/images/side2.svg"
+                      alt=""
+                      class="item-icon"
+                    />
+                    <span>تعليمات الذكاء الاصطناعي</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <section class="create-steps">
             <div class="steps-container">
               <div class="progress-line"></div>
@@ -239,7 +318,7 @@
               </div>
               <div class="form-group">
                 <h2>
-                    إضافة
+                  إضافة
                   <span>معرفة</span>
                 </h2>
 
@@ -274,7 +353,10 @@
                             aria-selected="true"
                           >
                             إدخال يدوي
-                            <img src="./assets/images/edit.svg" alt="arrow-circle" />
+                            <img
+                              src="./assets/images/edit.svg"
+                              alt="arrow-circle"
+                            />
                           </button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -289,7 +371,10 @@
                             aria-selected="false"
                           >
                             رفع مستند
-                            <img src="./assets/images/upload-icon.svg" alt="upload" />
+                            <img
+                              src="./assets/images/upload-icon.svg"
+                              alt="upload"
+                            />
                           </button>
                         </li>
                       </ul>
@@ -355,7 +440,7 @@
 
               <div class="form-group">
                 <h2>
-                    إضافة
+                  إضافة
                   <span>المرفقات</span>
                 </h2>
 

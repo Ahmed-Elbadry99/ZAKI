@@ -1,5 +1,5 @@
 .main-btn{
-    min-width: 130px;
+    /* min-width: 130px; */
     background: linear-gradient(0deg, #020202, #020202),
 linear-gradient(180deg, rgba(0, 123, 215, 0) 0%, rgba(0, 123, 215, 0.2) 100%);
 color: var(--white-color);
@@ -106,20 +106,20 @@ cursor: pointer;
     gap:10px;
     flex-wrap: wrap;
   }
-  .dropdown{
+  .filters .dropdown{
     position: relative;
     /* display: inline-block; */
     font-family: inherit;
   }
 
-  .dropdown.open .arrow-icon{
+  .filters .dropdown.open .arrow-icon{
     transform: rotate(180deg);
   }
-  .arrow-icon{
+  .filters .arrow-icon{
     transition: transform .15s ease;
   }
 
-  .dropdown-menu{
+  .filters .dropdown-menu{
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -132,11 +132,11 @@ cursor: pointer;
     z-index: 20;
     display: none;
   }
-  .dropdown.open .dropdown-menu{
+  .filters .dropdown.open .dropdown-menu{
     display: block;
   }
 
-  .dropdown-item{
+  .filters .dropdown-item{
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -152,27 +152,27 @@ cursor: pointer;
     border-radius: 8px;
     cursor: pointer;
   }
-  .dropdown-item:hover{
+  .filters .dropdown-item:hover{
     background: var(--main-color);
   }
-  .dropdown-item.active{
+  .filters .dropdown-item.active{
     color: #00E5A8;
   }
-  .dropdown-item.active::after{
+  .filters .dropdown-item.active::after{
     content: "✓";
     font-size: 12px;
   }
 
-  .dropdown-sep{
+  .filters .dropdown-sep{
     height: 1px;
     background: #1c2436;
     margin: 6px 4px;
   }
 
-  .calendar-row{
+  .filters .calendar-row{
     padding: 6px 12px 8px;
   }
-  .calendar-row label{
+  .filters .calendar-row label{
     font-size: 13px;
     display: block;
     text-align: right;
@@ -191,7 +191,7 @@ cursor: pointer;
     color-scheme: dark;
   }
   .toolbar .filters .main-btn{
-    min-width: 135px;
+    /* min-width: 135px; */
     display:flex;
     align-items:center;
     gap:8px;
