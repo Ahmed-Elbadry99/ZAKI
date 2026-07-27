@@ -29,6 +29,9 @@
     --black-color: #000;
     --main-color: rgba(0, 179, 248, 1);
     --text-color: rgba(126, 132, 143, 1);
+    --mint: #00E5A8;
+    --blue-link:#00B3F8;
+    --yellow: #f4b400;
 }
 
 body {
