@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="./css/general.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <!-- links css -->
-    <link rel="stylesheet" href="./css/nour.css" />
+    <!-- <link rel="stylesheet" href="./css/nour.css" /> -->
     <link rel="stylesheet" href="./css/register.css" />
     <!-- General css -->
     <!-- Responsive -->
@@ -184,16 +184,14 @@
               <button
                 class="main-btn btn-upgrade"
                 type="button"
-                onclick="openChangePlanModal()"
+                type="button" data-bs-toggle="modal" data-bs-target="#changePlanOverlay"
               >
                 <span>ترقية الباقة</span>
               </button>
 
               <button
                 class="main-btn"
-                type="button"
-                onclick="openCancelSubModal()"
-              >
+                type="button" data-bs-toggle="modal" data-bs-target="#cancelSubscriptionOverlay" aria-label="إلغاء الاشتراك">
                 <span>إلغاء الاشتراك</span>
               </button>
             </div>
@@ -409,8 +407,9 @@
       </div>
     </div>
 
-    <div class="modal-overlay" id="changePlanOverlay">
-      <div class="plan-modal-box">
+    <div class="modal fade" id="changePlanOverlay" tabindex="-1" aria-labelledby="changePlanOverlayLabel" aria-hidden="true" >
+      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content ">
         <div class="plan-modal-header">
           <div class="plan-modal-title">
             <h3>تغيير خطتك</h3>
@@ -419,7 +418,8 @@
           <button
             class="plan-modal-close"
             type="button"
-            onclick="closeChangePlanModal()"
+            data-bs-target="#changePlanOverlay"
+            data-bs-toggle="modal"
           >
             ✕
           </button>
@@ -484,7 +484,6 @@
             <button
               class="plan-btn upgrade-btn"
               type="button"
-              onclick="selectPlan('Professional')"
             >
               ترقية
             </button>
@@ -534,7 +533,6 @@
             <button
               class="plan-btn upgrade-btn"
               type="button"
-              onclick="selectPlan('Starter')"
             >
               ترقية
             </button>
@@ -542,52 +540,53 @@
         </div>
       </div>
     </div>
+  </div>
 
 
-    
-  <div class="modal-overlay" id="cancelSubOverlay">
-    <div class="modal-box">
- 
-      <div class="modal-header">
-        <div class="modal-title-wrap">
-          <h3>إلغاء الاشتراك</h3>
-          <p>اختر موعد إلغاء الاشتراك</p>
+    <!-- cancel subscription modal -->
+  <div class="modal fade" id="cancelSubscriptionOverlay" tabindex="-1" aria-labelledby="cancelSubscriptionOverlayLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <h3>إلغاء الاشتراك</h3>
+            <p>اختر موعد إلغاء الاشتراك</p>
+          </div>
+          <button class="modal-close" type="button" data-bs-target="#" data-bs-toggle="modal">✕</button>
         </div>
-        <button class="modal-close" type="button" onclick="closeCancelSubModal()">✕</button>
-      </div>
- 
-      <div class="warning-box">
-        <img src="./assets/images/warning-icon.svg" alt="warning-icon">
-        <div class="warning-text">
-          <p>هل أنت متأكد؟</p>
-          <p> إلغاء الاشتراك سيزيل الوصول إلى جميع الميزات في نهاية فترة الفوترة.</p>
+   
+        <div class="warning-box">
+          <img src="./assets/images/warning-icon.svg" alt="warning-icon">
+          <div class="warning-text">
+            <p>هل أنت متأكد؟</p>
+            <p> إلغاء الاشتراك سيزيل الوصول إلى جميع الميزات في نهاية فترة الفوترة.</p>
+          </div>
         </div>
-      </div>
- 
-      <label class="option-row">
-        <input type="radio" name="cancelOption" value="end_of_period" checked>
-        <div class="option-text">
-          <div class="opt-title">إلغاء في نهاية الفترة</div>
-          <div class="opt-desc">ستحتفظ بالوصول حتى نهاية الفترة الحالية</div>
+   
+        <label class="option-row">
+          <input type="radio" name="cancelOption" value="end_of_period" checked>
+          <div class="option-text">
+            <div class="opt-title">إلغاء في نهاية الفترة</div>
+            <div class="opt-desc">ستحتفظ بالوصول حتى نهاية الفترة الحالية</div>
+          </div>
+        </label>
+   
+        <label class="option-row">
+          <input type="radio" name="cancelOption" value="immediate">
+          <div class="option-text">
+            <div class="opt-title">إلغاء فورًا</div>
+            <div class="opt-desc">سيتم إلغاء اشتراكك فورًا وإزالة الوصول</div>
+          </div>
+        </label>
+   
+        <div class="modal-footer">
+          <button class="btn-danger" type="button">إلغاء الاشتراك</button>
+          <button class="btn-keep" type="button">الاحتفاظ بالاشتراك</button>
         </div>
-      </label>
- 
-      <label class="option-row">
-        <input type="radio" name="cancelOption" value="immediate">
-        <div class="option-text">
-          <div class="opt-title">إلغاء فورًا</div>
-          <div class="opt-desc">سيتم إلغاء اشتراكك فورًا وإزالة الوصول</div>
-        </div>
-      </label>
- 
-      <div class="modal-footer">
-        <button class="btn-danger" type="button" onclick="confirmCancelSub()">إلغاء الاشتراك</button>
-        <button class="btn-keep" type="button" onclick="closeCancelSubModal()">الاحتفاظ بالاشتراك</button>
-      </div>
 
-      
- 
+      </div>
     </div>
+    
   </div>
 
     <!-- Owl library js -->
@@ -600,6 +599,6 @@
     <!-- index js -->
     <script src="./js/index.js"></script>
     <!-- our js -->
-    <script src="./js/nour.js"></script>
+    <!-- <script src="./js/nour.js"></script> -->
   </body>
 </html>

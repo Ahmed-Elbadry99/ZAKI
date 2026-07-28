@@ -27,7 +27,7 @@
     <!-- Main Css -->
     <link rel="stylesheet" href="./css/main.css" />
     <!-- links css -->
-    <link rel="stylesheet" href="./css/nour.css" />
+    <!-- <link rel="stylesheet" href="./css/nour.css" /> -->
     <link rel="stylesheet" href="./css/register.css" />
     <!-- General css -->
     <link rel="stylesheet" href="./css/general.css" />
@@ -184,7 +184,7 @@
               <button
                 class="main-btn"
                 type="button"
-                onclick="openAddClientModal()"
+                type="button" data-bs-toggle="modal" data-bs-target="#addMemberOverlay"
               >
                 <span>إضافة </span>
                 <img
@@ -219,11 +219,11 @@
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown1">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -245,11 +245,11 @@
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown2">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -257,7 +257,6 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="openUpdateRoleModal()"
                         >
                           تعديل
                         </button>
@@ -277,11 +276,11 @@
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown3">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -289,7 +288,6 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="openUpdateRoleModal()"
                         >
                           تعديل
                         </button>
@@ -309,15 +307,20 @@
 
     <!-- ===== Add Client Modal ===== -->
 
-    <div class="modal-overlay" id="addClientOverlay">
-      <div class="modal-box">
+    <div
+    class="modal fade"
+    id="addMemberOverlay"
+
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
         <div class="modal-header">
           <h3>إضافة عضو للفريق</h3>
           <button
             class="modal-close"
             type="button"
-            onclick="closeAddClientModal()"
-          >
+            data-bs-target="#addMemberOverlay"
+            data-bs-toggle="modal">
             ✕
           </button>
         </div>
@@ -402,7 +405,8 @@
             onclick="closeAddClientModal()"
           >
             إلغاء
-          </button>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -504,6 +508,6 @@
     <!-- index js -->
     <script src="./js/index.js"></script>
     <!-- our js -->
-    <script src="./js/nour.js"></script>
+    <!-- <script src="./js/nour.js"></script> -->
   </body>
 </html>

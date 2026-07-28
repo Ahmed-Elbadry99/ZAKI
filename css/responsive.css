@@ -37,6 +37,7 @@
     .chats .user-info {
         flex-direction: column;
         justify-content: center;
+        gap: 10px;
     }
     .communication .platform-box:not(.head) {
         flex-direction: column;
@@ -52,39 +53,49 @@
     .chats .chat-deatails .inputSend .input-wrapper {
         padding: 0 10px;
     }
+    .chats .conversation-list .conversation-card .actions,
+    .agent-tools .actions {
+        gap: 15px 5px;
+    }
+    .dots-dropdown-menu .dropdown {
+        left: -20px;
+    }
+
+    .communication .platform-box .platform-content {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+    .communication .platform-box {
+        align-items: start;
+    }
+    .agent-tools .actions .dots-dropdown-menu {
+        font-size: 13px;
+        padding: 0 7px;
+    }
+    .customer-comments .user-info .avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 15px;
+    }
+    .chats .avatar .social-icon {
+        width: 20px;
+        height: 20px;
+        bottom: -5px;
+    }
+    .customer-comments .comments-box {
+        grid-area: 20px;
+    }
 }
 
-@media (max-width: 425px) {
-
-
-
-
-    /*  */
-
-    .create-steps .steps-container .step-item p{
-        font-size: 12px;
-    }   
-    .create-steps .steps-container .step-item {
-        width: 45px;
-        height: 45px;
+@media (max-width: 492px) {
+    .communication .platform-box figure img {
+        width: 35px;
+        height: 35px;
     }
-
-    .create-steps-content form .form-group h2 {
-        font-size: 20px;
+    .communication .platform-box .platform-content .platform-info {
+        gap: 10px;
     }
-    .create-steps-content form .form-group h2 span,
-    .create-steps-content form .form-group  label,
-    .create-steps-content form .form-group  input,
-    .add-data-header label,
-    .upload-data-box label{
-        font-size: 12px;
-        font-weight: 500;
-    }
-
-  
-  
-
-
 }
 
 @media (max-width: 386px) {

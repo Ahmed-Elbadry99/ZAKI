@@ -12,7 +12,12 @@
     <!-- fontawesome-->
     <link rel="stylesheet" href="./css/all.min.css" />
     <!-- bootstrap css-->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
     <!-- Owl Carousel CSS -->
     <link
       rel="stylesheet"
@@ -27,8 +32,8 @@
     <!-- Main Css -->
     <link rel="stylesheet" href="./css/main.css" />
     <!-- links css -->
-    <link rel="stylesheet" href="./css/nour.css" />
-    <link rel="stylesheet" href="./css/register.css" />
+    <!-- <link rel="stylesheet" href="./css/nour.css" /> -->
+    <!-- <link rel="stylesheet" href="./css/register.css" /> -->
     <!-- General css -->
     <link rel="stylesheet" href="./css/general.css" />
     <!-- Responsive -->
@@ -184,20 +189,17 @@
               <button
                 class="main-btn"
                 type="button"
-                onclick="openAddClientModal()"
+                data-bs-toggle="modal"
+                data-bs-target="#addClientModal"
               >
                 <span>إضافة عميل</span>
-                <img
-                  src="./assets/images/plus-circle.svg"
-                  alt="arrow-circle"
-                />
+                <img src="./assets/images/plus-circle.svg" alt="arrow-circle" />
               </button>
-
-              <div class="dropdown">
+              <div class="dropdown-bar" id="dropdown-bar">
                 <button
                   class="more-btn-icon"
                   type="button"
-                  onclick="toggleRowDropdown(this)"
+                  onclick="toggleDropdown(this)"
                 >
                   <img src="./assets/images/dots.svg" alt="more" />
                 </button>
@@ -216,10 +218,8 @@
                   </button>
                   <button
                     class="dropdown-item"
-                    onclick="
-                      handleMoreAction(this, 'تعديل الأعمدة');
-                      openEditColumnsModal();
-                    "
+                    data-bs-target="#editColumnsModal"
+                    data-bs-toggle="modal"
                   >
                     <img
                       src="./assets/images/columns.svg"
@@ -230,10 +230,8 @@
                   </button>
                   <button
                     class="dropdown-item"
-                    onclick="
-                      handleMoreAction(this, 'تعديل الحالات');
-                      openEditStatusesModal();
-                    "
+                    data-bs-target="#editStatusesModal"
+                    data-bs-toggle="modal"
                   >
                     <img
                       src="./assets/images/statuses.svg"
@@ -242,13 +240,7 @@
                     />
                     <span>تعديل الحالات</span>
                   </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="
-                      handleMoreAction(this, 'تعليمات الذكاء الاصطناعي');
-                      openAiInstructionsModal();
-                    "
-                  >
+                  <button class="dropdown-item" data-bs-target="#aiInstructionsModal" data-bs-toggle="modal">
                     <img
                       src="./assets/images/side2.svg"
                       alt=""
@@ -268,11 +260,11 @@
                 <span>بحث</span>
               </button>
 
-              <div class="dropdown" id="statusDropdown">
+              <div class="dropdown dropdown-bar" id="statusDropdown">
                 <button
                   class="main-btn"
                   type="button"
-                  onclick="toggleDropdown('statusDropdown')"
+                  onclick="toggleDropdown(this)"
                 >
                   <span id="statusFilterLabel">الحالة</span>
                   <img
@@ -283,41 +275,21 @@
                 </button>
 
                 <div class="dropdown-menu">
-                  <button
-                    class="dropdown-item"
-                    onclick="selectStatusOption(this, 'جديد')"
-                  >
-                    جديد
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectStatusOption(this, 'قيد المعالجة')"
-                  >
-                    قيد المعالجة
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectStatusOption(this, 'محتمل')"
-                  >
-                    محتمل
-                  </button>
+                  <button class="dropdown-item">جديد</button>
+                  <button class="dropdown-item">قيد المعالجة</button>
+                  <button class="dropdown-item">محتمل</button>
 
                   <div class="dropdown-sep"></div>
 
-                  <button
-                    class="dropdown-item"
-                    onclick="selectStatusOption(this, 'الكل')"
-                  >
-                    الكل
-                  </button>
+                  <button class="dropdown-item">الكل</button>
                 </div>
               </div>
 
-              <div class="dropdown" id="officerDropdown">
+              <div class="dropdown dropdown-bar" id="officerDropdown">
                 <button
                   class="main-btn"
                   type="button"
-                  onclick="toggleDropdown('officerDropdown')"
+                  onclick="toggleDropdown(this)"
                 >
                   <span id="officerFilterLabel">المسؤول</span>
                   <img
@@ -328,41 +300,21 @@
                 </button>
 
                 <div class="dropdown-menu">
-                  <button
-                    class="dropdown-item"
-                    onclick="selectOfficerOption(this, 'Yasmeen Akl')"
-                  >
-                    Yasmeen Akl
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectOfficerOption(this, 'Ahmed Salah')"
-                  >
-                    Ahmed Salah
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectOfficerOption(this, 'Mona Ibrahim')"
-                  >
-                    Mona Ibrahim
-                  </button>
+                  <button class="dropdown-item">Yasmeen Akl</button>
+                  <button class="dropdown-item">Ahmed Salah</button>
+                  <button class="dropdown-item">Mona Ibrahim</button>
 
                   <div class="dropdown-sep"></div>
 
-                  <button
-                    class="dropdown-item"
-                    onclick="selectOfficerOption(this, 'الكل')"
-                  >
-                    الكل
-                  </button>
+                  <button class="dropdown-item">الكل</button>
                 </div>
               </div>
 
-              <div class="dropdown" id="dateDropdown">
+              <div class="dropdown dropdown-bar" id="dateDropdown">
                 <button
                   class="main-btn"
                   type="button"
-                  onclick="toggleDropdown('dateDropdown')"
+                  onclick="toggleDropdown(this)"
                 >
                   <span id="dateFilterLabel">تاريخ الإنشاء</span>
                   <img
@@ -436,11 +388,11 @@
                   </td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown  dropdown-bar" id="statusDropdownRow">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="status-label">جديد</span>
                         <img
@@ -453,21 +405,18 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'جديد', 'new')"
                         >
                           جديد
                         </button>
                         <button
                           class="dropdown-item"
                           onclick="
-                            selectRowStatus(this, 'قيد المعالجة', 'processing')
                           "
                         >
                           قيد المعالجة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'محتمل', 'possible')"
                         >
                           محتمل
                         </button>
@@ -475,11 +424,11 @@
                     </div>
                   </td>
                   <td class="col-officer">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="officerDropdownRow">
                       <button
                         class="officer-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="officer-name">Yasmeen Akl</span>
                         <img
@@ -492,19 +441,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Yasmeen Akl')"
                         >
                           Yasmeen Akl
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Ahmed Salah')"
                         >
                           Ahmed Salah
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Mona Ibrahim')"
                         >
                           Mona Ibrahim
                         </button>
@@ -514,11 +460,11 @@
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-phone">01024866589</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="actionDropdownRow">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -526,19 +472,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
                         >
                           محادثة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
                         >
                           تعديل
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'حذف')"
                         >
                           حذف
                         </button>
@@ -559,11 +502,11 @@
                   </td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="statusDropdownRow1">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="status-label">جديد</span>
                         <img
@@ -576,21 +519,18 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'جديد', 'new')"
                         >
                           جديد
                         </button>
                         <button
                           class="dropdown-item"
                           onclick="
-                            selectRowStatus(this, 'قيد المعالجة', 'processing')
                           "
                         >
                           قيد المعالجة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'محتمل', 'possible')"
                         >
                           محتمل
                         </button>
@@ -598,11 +538,11 @@
                     </div>
                   </td>
                   <td class="col-officer">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="officerDropdownRow1">
                       <button
                         class="officer-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                          onclick="toggleDropdown(this)"
                       >
                         <span class="officer-name">Yasmeen Akl</span>
                         <img
@@ -615,19 +555,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Yasmeen Akl')"
                         >
                           Yasmeen Akl
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Ahmed Salah')"
                         >
                           Ahmed Salah
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Mona Ibrahim')"
                         >
                           Mona Ibrahim
                         </button>
@@ -637,11 +574,11 @@
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-phone">01024866589</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="actionDropdownRow1">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -649,19 +586,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
                         >
                           محادثة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
                         >
                           تعديل
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'حذف')"
                         >
                           حذف
                         </button>
@@ -682,11 +616,11 @@
                   </td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="statusDropdownRow2">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="status-label">جديد</span>
                         <img
@@ -699,21 +633,18 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'جديد', 'new')"
                         >
                           جديد
                         </button>
                         <button
                           class="dropdown-item"
                           onclick="
-                            selectRowStatus(this, 'قيد المعالجة', 'processing')
                           "
                         >
                           قيد المعالجة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'محتمل', 'possible')"
                         >
                           محتمل
                         </button>
@@ -721,11 +652,11 @@
                     </div>
                   </td>
                   <td class="col-officer">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="officerDropdownRow2">
                       <button
                         class="officer-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="officer-name">Yasmeen Akl</span>
                         <img
@@ -738,19 +669,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Yasmeen Akl')"
                         >
                           Yasmeen Akl
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Ahmed Salah')"
                         >
                           Ahmed Salah
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Mona Ibrahim')"
                         >
                           Mona Ibrahim
                         </button>
@@ -760,11 +688,11 @@
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-phone">01024866589</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="actionDropdownRow2">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -772,19 +700,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
                         >
                           محادثة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
                         >
                           تعديل
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'حذف')"
                         >
                           حذف
                         </button>
@@ -805,11 +730,11 @@
                   </td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="statusDropdownRow3">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="status-label">جديد</span>
                         <img
@@ -822,21 +747,17 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'جديد', 'new')"
+                          onclick="selectModalOption(this, 'statusDropdownRow3', 'statusFilterLabel', 'جديد')"
                         >
                           جديد
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="
-                            selectRowStatus(this, 'قيد المعالجة', 'processing')
-                          "
                         >
                           قيد المعالجة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'محتمل', 'possible')"
                         >
                           محتمل
                         </button>
@@ -844,11 +765,11 @@
                     </div>
                   </td>
                   <td class="col-officer">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="officerDropdownRow3">
                       <button
                         class="officer-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="officer-name">Yasmeen Akl</span>
                         <img
@@ -861,19 +782,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Yasmeen Akl')"
                         >
                           Yasmeen Akl
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Ahmed Salah')"
                         >
                           Ahmed Salah
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Mona Ibrahim')"
                         >
                           Mona Ibrahim
                         </button>
@@ -883,11 +801,11 @@
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-phone">01024866589</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="actionDropdownRow3">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -895,19 +813,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
                         >
                           محادثة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
                         >
                           تعديل
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'حذف')"
                         >
                           حذف
                         </button>
@@ -928,11 +843,11 @@
                   </td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="statusDropdownRow4">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="status-label">جديد</span>
                         <img
@@ -945,15 +860,13 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowStatus(this, 'جديد', 'new')"
+                          onclick="selectModalOption(this, 'statusDropdownRow4', 'statusFilterLabel', 'جديد')"
                         >
                           جديد
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="
-                            selectRowStatus(this, 'قيد المعالجة', 'processing')
-                          "
+                          onclick="selectModalOption(this, 'statusDropdownRow4', 'statusFilterLabel', 'قيد المعالجة')"
                         >
                           قيد المعالجة
                         </button>
@@ -967,11 +880,11 @@
                     </div>
                   </td>
                   <td class="col-officer">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="officerDropdownRow4">
                       <button
                         class="officer-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <span class="officer-name">Yasmeen Akl</span>
                         <img
@@ -984,19 +897,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Yasmeen Akl')"
                         >
                           Yasmeen Akl
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Ahmed Salah')"
                         >
                           Ahmed Salah
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="selectRowOfficer(this, 'Mona Ibrahim')"
                         >
                           Mona Ibrahim
                         </button>
@@ -1006,11 +916,11 @@
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-phone">01024866589</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="actionDropdownRow4">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
@@ -1018,19 +928,16 @@
                       <div class="dropdown-menu">
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
                         >
                           محادثة
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
                         >
                           تعديل
                         </button>
                         <button
                           class="dropdown-item"
-                          onclick="handleRowAction(this, 'حذف')"
                         >
                           حذف
                         </button>
@@ -1049,17 +956,117 @@
 
     <!-- ===== Add Client Modal ===== -->
 
-    <div class="modal-overlay" id="addClientOverlay">
+    <div
+      class="modal fade"
+      id="addClientModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>إضافة عميل</h3>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            >
+              <img src="./assets/images/close.svg" alt="close" />
+            </button>
+          </div>
+
+          <div class="modal-box">
+            <div class="modal-body">
+              <div class="form-group">
+                <input type="text" id="clientName" placeholder="الاسم" />
+              </div>
+
+              <div class="form-group">
+                <input type="tel" id="clientPhone" placeholder="الهاتف" />
+              </div>
+
+              <div class="form-group">
+                <textarea
+                  id="clientSummary"
+                  placeholder="الملخص"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <div class="dropdown dropdown-bar" id="modalStatusDropdown">
+                  <button
+                    class="select-btn"
+                    type="button"
+                    onclick="toggleDropdown(this)"
+                  >
+                    <span id="modalStatusLabel">الحالة</span>
+                    <img
+                      src="./assets/images/arrow.svg"
+                      alt="arrow"
+                      class="arrow-icon"
+                    />
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item">جديد</button>
+                    <button class="dropdown-item">قيد المعالجة</button>
+                    <button class="dropdown-item">محتمل</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="dropdown dropdown-bar" id="modalOfficerDropdown">
+                  <button
+                    class="select-btn"
+                    type="button"
+                    onclick="toggleDropdown(this)"
+                  >
+                    <span id="modalOfficerLabel">المسؤول</span>
+                    <img
+                      src="./assets/images/arrow.svg"
+                      alt="arrow"
+                      class="arrow-icon"
+                    />
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item">Yasmeen Akl</button>
+                    <button class="dropdown-item">Ahmed Salah</button>
+                    <button class="dropdown-item">Mona Ibrahim</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn-submit" type="button">إضافة عميل</button>
+              <button
+                class="btn-cancel"
+                type="button"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id=""
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div class="modal-box">
         <div class="modal-header">
           <h3>إضافة عميل</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeAddClientModal()"
-          >
-            ✕
-          </button>
+          <button class="modal-close" type="button">✕</button>
         </div>
 
         <div class="modal-body">
@@ -1081,11 +1088,7 @@
 
           <div class="form-group">
             <div class="dropdown" id="modalStatusDropdown">
-              <button
-                class="select-btn"
-                type="button"
-                onclick="toggleDropdown('modalStatusDropdown')"
-              >
+              <button class="select-btn" type="button">
                 <span id="modalStatusLabel">الحالة</span>
                 <img
                   src="./assets/images/arrow.svg"
@@ -1094,56 +1097,16 @@
                 />
               </button>
               <div class="dropdown-menu">
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalStatusDropdown',
-                      'modalStatusLabel',
-                      this,
-                      'جديد',
-                    )
-                  "
-                >
-                  جديد
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalStatusDropdown',
-                      'modalStatusLabel',
-                      this,
-                      'قيد المعالجة',
-                    )
-                  "
-                >
-                  قيد المعالجة
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalStatusDropdown',
-                      'modalStatusLabel',
-                      this,
-                      'محتمل',
-                    )
-                  "
-                >
-                  محتمل
-                </button>
+                <button class="dropdown-item">جديد</button>
+                <button class="dropdown-item">قيد المعالجة</button>
+                <button class="dropdown-item">محتمل</button>
               </div>
             </div>
           </div>
 
           <div class="form-group">
             <div class="dropdown" id="modalOfficerDropdown">
-              <button
-                class="select-btn"
-                type="button"
-                onclick="toggleDropdown('modalOfficerDropdown')"
-              >
+              <button class="select-btn" type="button">
                 <span id="modalOfficerLabel">المسؤول</span>
                 <img
                   src="./assets/images/arrow.svg"
@@ -1152,368 +1115,432 @@
                 />
               </button>
               <div class="dropdown-menu">
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalOfficerDropdown',
-                      'modalOfficerLabel',
-                      this,
-                      'Yasmeen Akl',
-                    )
-                  "
-                >
-                  Yasmeen Akl
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalOfficerDropdown',
-                      'modalOfficerLabel',
-                      this,
-                      'Ahmed Salah',
-                    )
-                  "
-                >
-                  Ahmed Salah
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'modalOfficerDropdown',
-                      'modalOfficerLabel',
-                      this,
-                      'Mona Ibrahim',
-                    )
-                  "
-                >
-                  Mona Ibrahim
-                </button>
+                <button class="dropdown-item">Yasmeen Akl</button>
+                <button class="dropdown-item">Ahmed Salah</button>
+                <button class="dropdown-item">Mona Ibrahim</button>
               </div>
             </div>
           </div>
         </div>
 
         <div class="modal-footer">
-          <button class="btn-submit" type="button" onclick="submitAddClient()">
-            إضافة عميل
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeAddClientModal()"
-          >
-            إلغاء
-          </button>
+          <button class="btn-submit" type="button">إضافة عميل</button>
+          <button class="btn-cancel" type="button">إلغاء</button>
         </div>
       </div>
     </div>
 
     <!-- ===== Edit Columns Modal ===== -->
-    <div class="modal-overlay" id="editColumnsOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>تعديل الأعمدة</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeEditColumnsModal()"
-          >
-            ✕
-          </button>
-        </div>
 
-        <div class="modal-body">
-          <div class="column-rows">
-            <div class="column-row">
-              <span class="column-name">الاسم</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
+    <div
+      class="modal fade"
+      id="editColumnsModal"
+      
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h3>تعديل الأعمدة</h3>
+              <button
+                class="modal-close"
+                type="button"
+                data-bs-target="#editColumnsModal"
+                data-bs-toggle="modal"
+              >
+                ✕
+              </button>
             </div>
 
-            <div class="column-row">
-              <span class="column-name">رقم الهاتف</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
+            <div class="modal-body">
+              <div class="column-rows">
+                <div class="column-row">
+                  <span class="column-name">الاسم</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">رقم الهاتف</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">الملخص</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">البريد</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">الحالة</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">المسؤول</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">تاريخ الإنشاء</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
               </div>
+
+              <button
+                class="add-column-btn"
+                type="button"
+                data-bs-target="#exampleModalToggle2"
+                data-bs-toggle="modal"
+              >
+                إضافة عمود
+                <span class="plus-icon">+</span>
+              </button>
             </div>
 
-            <div class="column-row">
-              <span class="column-name">الملخص</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
-            </div>
-
-            <div class="column-row">
-              <span class="column-name">البريد</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
-            </div>
-
-            <div class="column-row">
-              <span class="column-name">الحالة</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
-            </div>
-
-            <div class="column-row">
-              <span class="column-name">المسؤول</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
-            </div>
-
-            <div class="column-row">
-              <span class="column-name">تاريخ الإنشاء</span>
-              <div class="column-actions">
-                <img
-                  src="./assets/images/edit.svg"
-                  alt="edit"
-                  class="row-icon"
-                />
-                <img
-                  src="./assets/images/delete.svg"
-                  alt="delete"
-                  class="row-icon"
-                />
-              </div>
+            <div class="modal-footer">
+              <button class="btn-submit" type="button">حفظ التغييرات</button>
+              <button class="btn-cancel" type="button">إلغاء</button>
             </div>
           </div>
-
-          <button
-            class="add-column-btn"
-            type="button"
-            onclick="openAddColumnModal()"
-          >
-            <span>إضافة عمود</span>
-            <span class="plus-icon">+</span>
-          </button>
         </div>
+      </div>
+    </div>
 
-        <div class="modal-footer">
-          <button
-            class="btn-submit"
-            type="button"
-            onclick="saveColumnsChanges()"
-          >
-            حفظ التغييرات
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeEditColumnsModal()"
-          >
-            إلغاء
-          </button>
+    <div
+      class="modal fade"
+      id="exampleModalToggle2"
+      aria-hidden="true"
+      aria-labelledby="exampleModalToggleLabel2"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>إضافة عمود</h3>
+            <button
+              class="modal-close"
+              type="button"
+              data-bs-target="#exampleModalToggle"
+              data-bs-toggle="modal"
+            >
+              ✕
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="text" id="columnName" placeholder="اسم العمود" />
+            </div>
+
+            <div class="form-group">
+              <div class="dropdown" id="columnTypeDropdown">
+                <button
+                  class="select-btn"
+                  type="button"
+                  onclick="toggleDropdown('columnTypeDropdown')"
+                >
+                  <span id="columnTypeLabel">نوع العمود</span>
+                  <img
+                    src="./assets/images/arrow.svg"
+                    alt="arrow"
+                    class="arrow-icon"
+                  />
+                </button>
+                <div class="dropdown-menu">
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      selectModalOption(
+                        'columnTypeDropdown',
+                        'columnTypeLabel',
+                        this,
+                        'نص',
+                      )
+                    "
+                  >
+                    نص
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      selectModalOption(
+                        'columnTypeDropdown',
+                        'columnTypeLabel',
+                        this,
+                        'رقم',
+                      )
+                    "
+                  >
+                    رقم
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      selectModalOption(
+                        'columnTypeDropdown',
+                        'columnTypeLabel',
+                        this,
+                        'تاريخ',
+                      )
+                    "
+                  >
+                    تاريخ
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    onclick="
+                      selectModalOption(
+                        'columnTypeDropdown',
+                        'columnTypeLabel',
+                        this,
+                        'قائمة اختيار',
+                      )
+                    "
+                  >
+                    قائمة اختيار
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="columnKey" placeholder="مفتاح الحقل" />
+            </div>
+
+            <div class="form-group">
+              <span
+                >يُولَّد تلقائياً من اسم الحقل. اتركه فارغاً لنُولّد واحداً لك.
+                لا يمكن تغييره بعد الإنشاء.</span
+              >
+            </div>
+
+            <label class="checkbox-row">
+              <input type="checkbox" id="columnRequired" />
+              <span>حقل مطلوب</span>
+            </label>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn-submit" type="button">إنشاء عمود</button>
+            <button
+              class="btn-cancel"
+              type="button"
+              data-bs-target="#editColumnsModal"
+              data-bs-toggle="modal"
+            >
+              رجوع
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ===== Add Column Modal ===== -->
 
-    <div class="modal-overlay" id="addColumnOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>إضافة عمود</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeAddColumnModal()"
-          >
-            ✕
-          </button>
-        </div>
+    <!-- ===== Edit Statuses Modal ===== -->
 
-        <div class="modal-body">
-          <div class="form-group">
-            <input type="text" id="columnName" placeholder="اسم العمود" />
-          </div>
-
-          <div class="form-group">
-            <div class="dropdown" id="columnTypeDropdown">
+    <div
+      class="modal fade"
+      id="editStatusesModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h3>تعديل الحالات</h3>
               <button
-                class="select-btn"
+                class="modal-close"
                 type="button"
-                onclick="toggleDropdown('columnTypeDropdown')"
+                data-bs-target="#editStatusesModal"
+                data-bs-toggle="modal"
               >
-                <span id="columnTypeLabel">نوع العمود</span>
-                <img
-                  src="./assets/images/arrow.svg"
-                  alt="arrow"
-                  class="arrow-icon"
-                />
+                ✕
               </button>
-              <div class="dropdown-menu">
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'columnTypeDropdown',
-                      'columnTypeLabel',
-                      this,
-                      'نص',
-                    )
-                  "
-                >
-                  نص
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'columnTypeDropdown',
-                      'columnTypeLabel',
-                      this,
-                      'رقم',
-                    )
-                  "
-                >
-                  رقم
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'columnTypeDropdown',
-                      'columnTypeLabel',
-                      this,
-                      'تاريخ',
-                    )
-                  "
-                >
-                  تاريخ
-                </button>
-                <button
-                  class="dropdown-item"
-                  onclick="
-                    selectModalOption(
-                      'columnTypeDropdown',
-                      'columnTypeLabel',
-                      this,
-                      'قائمة اختيار',
-                    )
-                  "
-                >
-                  قائمة اختيار
-                </button>
+            </div>
+
+            <p class="modal-subtitle">
+              إضافة وإزالة وتعديل خيارات الحالات للعملاء المحتملين
+            </p>
+
+            <div class="modal-body">
+              <label class="section-label">خيارات القائمة</label>
+
+              <div class="column-rows" id="statusRows">
+                <div class="column-row">
+                  <span class="column-name">جديد</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">قيد المعالجة</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
+
+                <div class="column-row">
+                  <span class="column-name">مكتمل</span>
+                  <div class="column-actions">
+                    <img
+                      src="./assets/images/delete.svg"
+                      alt="delete"
+                      class="row-icon"
+                    />
+                    <img
+                      src="./assets/images/edit.svg"
+                      alt="edit"
+                      class="row-icon"
+                    />
+                  </div>
+                </div>
               </div>
+
+              <button
+                class="add-column-btn"
+                type="button"
+                data-bs-target="#addStatusModal"
+                data-bs-toggle="modal"
+              >
+                <span>إضافة خيار</span>
+                <span class="plus-icon">+</span>
+              </button>
+            </div>
+
+            <div class="modal-footer">
+              <button class="btn-submit" type="button">حفظ التغييرات</button>
+              <button class="btn-cancel" type="button">إلغاء</button>
             </div>
           </div>
-
-          <div class="form-group">
-            <input type="text" id="columnKey" placeholder="مفتاح الحقل" />
-          </div>
-
-          <div class="form-group">
-            <span
-              >يُولَّد تلقائياً من اسم الحقل. اتركه فارغاً لنُولّد واحداً لك. لا
-              يمكن تغييره بعد الإنشاء.</span
-            >
-          </div>
-
-          <label class="checkbox-row">
-            <input type="checkbox" id="columnRequired" />
-            <span>حقل مطلوب</span>
-          </label>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn-submit" type="button" onclick="submitNewColumn()">
-            إنشاء عمود
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeAddColumnModal()"
-          >
-            رجوع
-          </button>
         </div>
       </div>
     </div>
 
-    <!-- ===== Edit Statuses Modal ===== -->
-    <div class="modal-overlay" id="editStatusesOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>تعديل الحالات</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeEditStatusesModal()"
-          >
-            ✕
-          </button>
-        </div>
+    <!-- ===== Edit Status Modal ===== -->
 
-        <p class="modal-subtitle">
-          إضافة وإزالة وتعديل خيارات الحالات للعملاء المحتملين
-        </p>
+    <div
+      class="modal fade"
+      id="addStatusModal"
 
-        <div class="modal-body">
-          <label class="section-label">خيارات القائمة</label>
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>إضافة حالة</h3>
+            <button
+              class="modal-close"
+              type="button"
+              data-bs-target="#addStatusModal"
+              data-bs-toggle="modal"
+            >
+              ✕
+            </button>
+          </div>
 
-          <div class="column-rows" id="statusRows">
+          <div class="modal-body">
             <div class="column-row">
               <span class="column-name">جديد</span>
               <div class="column-actions">
@@ -1531,7 +1558,12 @@
             </div>
 
             <div class="column-row">
-              <span class="column-name">قيد المعالجة</span>
+              <div class="form-group">
+                <label class="section-label">لون الخيار</label>
+                <div class="color-picker-row">
+                  <input type="color" id="newStatusColor" value="#f4b400" />
+                </div>
+              </div>
               <div class="column-actions">
                 <img
                   src="./assets/images/delete.svg"
@@ -1544,6 +1576,10 @@
                   class="row-icon"
                 />
               </div>
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="newStatusKey" placeholder="قيد المعالجة" />
             </div>
 
             <div class="column-row">
@@ -1561,240 +1597,172 @@
                 />
               </div>
             </div>
+
+            <button
+              class="add-column-btn"
+              type="button"
+              data-bs-target="#addStatusOptionModal"
+              data-bs-toggle="modal"
+            >
+              <span>إضافة حالة</span>
+              <span class="plus-icon">+</span>
+            </button>
           </div>
 
-          <button
-            class="add-column-btn"
-            type="button"
-            onclick="openAddStatusModal()"
-          >
-            <span>إضافة خيار</span>
-            <span class="plus-icon">+</span>
-          </button>
-        </div>
-
-        <div class="modal-footer">
-          <button
-            class="btn-submit"
-            type="button"
-            onclick="saveStatusesChanges()"
-          >
-            حفظ التغييرات
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeEditStatusesModal()"
-          >
-            إلغاء
-          </button>
+          <div class="modal-footer">
+            <button class="btn-submit" type="button">حفظ التغييرات</button>
+            <button
+              class="btn-cancel"
+              type="button"
+              data-bs-target="#addStatusModal"
+              data-bs-toggle="modal"
+            >
+              إلغاء
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ===== Edit Status Modal ===== -->
 
-    <div class="modal-overlay" id="addStatusOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>إضافة حالة</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeAddStatusModal()"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <div class="column-row">
-            <span class="column-name">جديد</span>
-            <div class="column-actions">
-              <img
-                src="./assets/images/delete.svg"
-                alt="delete"
-                class="row-icon"
-              />
-              <img src="./assets/images/edit.svg" alt="edit" class="row-icon" />
+    <div
+      class="modal fade"
+      id="addStatusOptionModal"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h3>إضافة حالة</h3>
+              <button
+                class="modal-close"
+                type="button"
+                data-bs-target="#addStatusOptionModal"
+                data-bs-toggle="modal"
+              >
+                ✕
+              </button>
             </div>
-          </div>
 
-          <div class="column-row">
-            <div class="form-group">
-              <label class="section-label">لون الخيار</label>
-              <div class="color-picker-row">
-                <input type="color" id="newStatusColor" value="#f4b400" />
+            <p class="modal-subtitle">
+              إضافة وإزالة وتعديل خيارات الحالات للعملاء المحتملين
+            </p>
+
+            <div class="status-card">
+              <div class="status-card-top">
+                <div class="column-actions">
+                  <img
+                    src="./assets/images/delete.svg"
+                    alt="delete"
+                    class="row-icon"
+                  />
+                  <img
+                    src="./assets/images/edit.svg"
+                    alt="edit"
+                    class="row-icon"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="section-label">اسم الحالة</label>
+                <input
+                  type="text"
+                  id="statusOptionName"
+                  placeholder="اسم مثال: جديد"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="section-label">لون الخيار</label>
+                <div class="color-picker-row">
+                  <input type="color" id="statusOptionColor" value="#f4b400" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="section-label">المفتاح</label>
+                <input
+                  type="text"
+                  id="statusOptionKey"
+                  placeholder="مفتاح مثال: جديد"
+                />
               </div>
             </div>
-            <div class="column-actions">
-              <img
-                src="./assets/images/delete.svg"
-                alt="delete"
-                class="row-icon"
-              />
-              <img src="./assets/images/edit.svg" alt="edit" class="row-icon" />
+
+            <div class="modal-footer">
+              <button
+                class="btn-cancel"
+                type="button"
+                data-bs-target="#addStatusOptionModal"
+                data-bs-toggle="modal"
+              >
+                إلغاء
+              </button>
+              <button
+                class="btn-submit"
+                type="button"
+                data-bs-target="#addStatusOptionModal"
+                data-bs-toggle="modal"
+              >
+                حفظ التغييرات
+              </button>
             </div>
           </div>
-
-          <div class="form-group">
-            <input type="text" id="newStatusKey" placeholder="قيد المعالجة" />
-          </div>
-
-          <div class="column-row">
-            <span class="column-name">مكتمل</span>
-            <div class="column-actions">
-              <img
-                src="./assets/images/delete.svg"
-                alt="delete"
-                class="row-icon"
-              />
-              <img src="./assets/images/edit.svg" alt="edit" class="row-icon" />
-            </div>
-          </div>
-
-          <button
-            class="add-column-btn"
-            type="button"
-            onclick="openAddStatusOptionModal()"
-          >
-            <span>إضافة حالة</span>
-            <span class="plus-icon">+</span>
-          </button>
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn-submit" type="button" onclick="submitNewStatus()">
-            حفظ التغييرات
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeAddStatusModal()"
-          >
-            إلغاء
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== Edit Status Modal ===== -->
-
-    <div class="modal-overlay" id="addStatusOptionOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>إضافة حالة</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeAddStatusOptionModal()"
-          >
-            ✕
-          </button>
-        </div>
-
-        <p class="modal-subtitle">
-          إضافة وإزالة وتعديل خيارات الحالات للعملاء المحتملين
-        </p>
-
-        <div class="status-card">
-          <div class="status-card-top">
-            <div class="column-actions">
-              <img
-                src="./assets/images/delete.svg"
-                alt="delete"
-                class="row-icon"
-              />
-              <img src="./assets/images/edit.svg" alt="edit" class="row-icon" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="section-label">اسم الحالة</label>
-            <input
-              type="text"
-              id="statusOptionName"
-              placeholder="اسم مثال: جديد"
-            />
-          </div>
-
-          <div class="form-group">
-            <label class="section-label">لون الخيار</label>
-            <div class="color-picker-row">
-              <input type="color" id="statusOptionColor" value="#f4b400" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="section-label">المفتاح</label>
-            <input
-              type="text"
-              id="statusOptionKey"
-              placeholder="مفتاح مثال: جديد"
-            />
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeAddStatusOptionModal()"
-          >
-            إلغاء
-          </button>
-          <button
-            class="btn-submit"
-            type="button"
-            onclick="submitStatusOption()"
-          >
-            حفظ التغييرات
-          </button>
         </div>
       </div>
     </div>
 
     <!-- ===== Edit Status Option Modal ===== -->
-    <div class="modal-overlay" id="aiInstructionsOverlay">
-      <div class="modal-box">
-        <div class="modal-header">
-          <h3>تعليمات حفظ العملاء</h3>
-          <button
-            class="modal-close"
-            type="button"
-            onclick="closeAiInstructionsModal()"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <div class="form-group">
-            <textarea id="aiInstructionsText" rows="6">
-Capture lead when user provides their (phone number OR email). Trigger with high confidence when contact information is shared. Summary should include what is the lead's interest (Ex. wants to book appointment on XYZ, requesting 2 XL sized shirts, Requested more info about the services, etc)</textarea
+    <div
+      class="modal fade"
+      id="aiInstructionsModal"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>تعليمات حفظ العملاء</h3>
+            <button
+              class="modal-close"
+              type="button"
+              data-bs-target="#aiInstructionsModal"
+              data-bs-toggle="modal"
             >
+              ✕
+            </button>
           </div>
 
-          <p class="modal-subtitle center-text">
-            التعليمات اللي تخبر الذكاء الاصطناعي متى وكيف يلتقط معلومات العميل
-          </p>
-        </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <textarea id="aiInstructionsText" rows="6">
+Capture lead when user provides their (phone number OR email). Trigger with high confidence when contact information is shared. Summary should include what is the lead's interest (Ex. wants to book appointment on XYZ, requesting 2 XL sized shirts, Requested more info about the services, etc)</textarea
+              >
+            </div>
 
-        <div class="modal-footer">
-          <button
-            class="btn-submit"
-            type="button"
-            onclick="saveAiInstructions()"
-          >
-            حفظ الإعدادات
-          </button>
-          <button
-            class="btn-cancel"
-            type="button"
-            onclick="closeAiInstructionsModal()"
-          >
-            إلغاء
-          </button>
+            <p class="modal-subtitle center-text">
+              التعليمات اللي تخبر الذكاء الاصطناعي متى وكيف يلتقط معلومات العميل
+            </p>
+          </div>
+
+          <div class="modal-footer">
+            <button
+              class="btn-submit"
+              type="button"
+              data-bs-target="#aiInstructionsModal"
+              data-bs-toggle="modal"
+            >
+              حفظ الإعدادات
+            </button>
+            <button
+              class="btn-cancel"
+              type="button"
+              data-bs-target="#aiInstructionsModal"
+              data-bs-toggle="modal"
+            >
+              إلغاء
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1803,12 +1771,18 @@ Capture lead when user provides their (phone number OR email). Trigger with high
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <!-- bootstrap js -->
-    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
     <!-- Chart js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- index js -->
     <script src="./js/index.js"></script>
     <!-- our js -->
-    <script src="./js/nour.js"></script>
+    <!-- <script src="./js/nour.js"></script> -->
   </body>
 </html>

@@ -217,6 +217,26 @@ function scrollToBottom() {
 }
 
 // ================= إرسال الرسالة ================= //
+//  File Card //
+function createFileCard(file, url) {
+    return `
+    <div class="file-card">
+        <div class="file-icon">
+            <i class="fa-solid fa-file"></i>
+        </div>
+
+        <div class="file-details">
+            <h5>${file.name}</h5>
+            <span>${(file.size / 1024).toFixed(1)} KB</span>
+        </div>
+
+        <a href="${url}" download="${file.name}" class="file-action">
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+    </div>
+    `;
+}
+
 function sendMessage() {
     const text = input.value.trim();
     if (text === "" && selectedFiles.length === 0) return;
@@ -229,16 +249,18 @@ function sendMessage() {
     let attachments = "";
     selectedFiles.forEach(file => {
         const url = URL.createObjectURL(file);
+
         if (file.type.startsWith("image")) {
             attachments += `
-                <img class="chat-image" src="${url}">
-            `;
+            <img class="chat-image" src="${url}">
+        `;
         }
-        else {
+        else if (file.type.startsWith("video")) {
             attachments += `
-                <video class="chat-video" controls src="${url}"></video>
-            `;
+            <video class="chat-video" controls src="${url}"></video>
+        `;
         }
+        else {attachments += createFileCard(file, url);}
     });
 
     messagesBox.innerHTML += `
@@ -388,12 +410,12 @@ if (sendRecord) {
     });
 }
 
-function sendAudioMessage(){
-    if(!audioURL) return;
+function sendAudioMessage() {
+    if (!audioURL) return;
     const now = new Date();
     const time = now.toLocaleTimeString([], {
-        hour:"2-digit",
-        minute:"2-digit"
+        hour: "2-digit",
+        minute: "2-digit"
     });
     messagesBox.innerHTML += `
     <div class="myMessage-box d-flex align-items-start justify-content-end gap-3">
@@ -480,13 +502,12 @@ function renderPreview() {
                     <i class="fa-solid fa-xmark"></i>
                 </button>
 
-                ${
-                    file.type.startsWith("image")
-                    ?
-                    `<img src="${url}" alt="preview">`
-                    :
-                    `<video src="${url}" controls></video>`
-                }
+                ${file.type.startsWith("image")
+                ? `<img src="${url}" alt="preview">`
+                : file.type.startsWith("video")
+                    ? `<video src="${url}" controls></video>`
+                    : createFileCard(file, url)
+            }
             </div>
         `;
     });
@@ -524,114 +545,147 @@ conversationCards.forEach(card => {
     });
 
     const actions = card.querySelector(".actions");
-    if(actions){
+    if (actions) {
         actions.addEventListener("click", (e) => {
             e.stopPropagation();
         });
     }
+});
 
 
+//! ================= Close Chat Details (ESC) ================= //
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        chatDetails.classList.add("d-none");
+        emptyChat.classList.remove("d-none");
+
+        // إزالة الـ active من المحادثات
+        conversationCards.forEach(card => {
+            card.classList.remove("active");
+        });
+    }
 });
 
 
 
+// NOUR JS
 
-//! =============== Create Steps =============== //
+function toggleDropdown(btn) {
+    const dd = btn.parentElement.id;
+    const idDropdown = document.getElementById(dd);
+    const isOpen = idDropdown.classList.contains('open');
+    document.querySelectorAll('.dropdown-bar.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) { idDropdown.classList.add('open'); }
 
-const steps = document.querySelectorAll(".create-steps .step-item");
-const progressLine = document.querySelector(".create-steps .progress-line");
-let activeStepNumber =0;
-
-
-if(steps.length > 0){
-    steps.forEach(step => {
-    
-        if(step.classList.contains("active")){
-            activeStepNumber++;
-        }
-    });
-
-    if (activeStepNumber === 1) {
-        progressLine.style.setProperty("--before-width", "33.33%");
-        progressLine.style.setProperty("--after-width", "66.66%");
-    }
-
-    if (activeStepNumber === 2) {
-        progressLine.style.setProperty("--before-width", "66.66%");
-        progressLine.style.setProperty("--after-width", "33.33%");
-    }
-
-    if (activeStepNumber >= 3) {
-        progressLine.style.setProperty("--before-width", "100%");
-        progressLine.style.setProperty("--after-width", "0%");
-    }
 }
 
-// toggle collapse with js without bootstrap
+document.addEventListener('click', function (e) {
+    if (!e.target.closest('.dropdown-bar')) {
+        document.querySelectorAll('.dropdown-bar.open').forEach(el => el.classList.remove('open'));
+    }
+});
+function openAddClientModal() {
+    document.getElementById('addClientOverlay').classList.add('open');
+}
 
 
-const collapseBtns = document.querySelectorAll("[data-colapse]");
+// إعدادات مشتركة للشكل والألوان عشان تبقى متسقة في كل الشارتس
+Chart.defaults.font.family = "Cairo, sans-serif";
+Chart.defaults.color = "#8b93a8";
 
-collapseBtns.forEach(btn => {
-    btn.addEventListener("click", function (e) {
-        e.preventDefault();
+const gridColor = "rgba(255,255,255,0.05)";
 
-        const target = document.getElementById(this.dataset.colapse);
+/* 1) رسائل الذكاء الاصطناعي — Bar Chart */
+new Chart(document.getElementById('aiMessagesChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8'],
+    datasets: [{
+      data: [55, 40, 55, 55, 75, 55, 40, 55, 55, 75],
+      backgroundColor: '#2E9CE0',
+      borderRadius: 6,
+      barThickness: 50,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: gridColor }, ticks: { stepSize: 25 } }
+    }
+  }
+});
 
-        if (!target) return;
+/* 2) عدد المحادثات — Line/Area Chart */
+new Chart(document.getElementById('conversationsChart'), {
+  type: 'line',
+  data: {
+    labels: ['', '', '', '', '', '', '', ''],
+    datasets: [{
+      data: [20, 45, 15, 60, 30, 70, 35, 55],
+      borderColor: '#2E9CE0',
+      backgroundColor: 'rgba(46,156,224,0.25)',
+      borderWidth: 2,
+      fill: true,
+      tension: 0.4,
+      pointRadius: 5,
+      pointBackgroundColor: '#2E9CE0',
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { display: false } },
+      y: { grid: { color: gridColor } }
+    }
+  }
+});
 
-        target.classList.toggle("active");
-    });
+/* 3) المستخدمين القاضين — Donut Chart */
+new Chart(document.getElementById('usersDonutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['عدد المستخدمين القاضين', 'عدد المستخدمين السعداء'],
+    datasets: [{
+      data: [30, 70],
+      backgroundColor: ['#00B7FF', '#0a2540'],
+      borderWidth: 0,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '72%',
+    plugins: { legend: { display: false } }
+  }
+});
+
+/* 4) العملاء المستخلصين — Horizontal Bar Chart */
+new Chart(document.getElementById('clientsBarChart'), {
+  type: 'bar',
+  data: {
+    labels: ['', '', ''],
+    datasets: [{
+      data: [55, 25, 70],
+      backgroundColor: '#2E9CE0',
+      borderRadius: 6,
+      barThickness: 40,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: gridColor } },
+      y: { grid: { display: false } }
+    }
+  }
 });
 
 
-//! =============== Upload Data Box =============== //
-
-const uploadDataBoxes = document.querySelectorAll(".upload-data-box");
-
-uploadDataBoxes.forEach(box => {
-    const input = box.querySelector("input[type='file']");
-    const filesList = box.querySelector(".files-list");
-
-    box.addEventListener("click", (e) => {
-        if (!e.target.closest(".file-item")) {
-            input.click();
-        }
-    });
-
-    input.addEventListener("change", () => {
-        [...input.files].forEach(file => {
-
-            const item = document.createElement("div");
-            item.className = "file-item";
-
-            const preview = document.createElement("img");
-            preview.className = "preview";
-
-            if (file.type.startsWith("image/")) {
-                preview.src = URL.createObjectURL(file);
-            } else {
-                preview.src = "./assets/images/file.svg";
-            }
-
-            const name = document.createElement("span");
-            name.textContent = file.name;
-
-            const remove = document.createElement("button");
-            remove.className = "remove-file";
-            remove.innerHTML = "&times;";
-
-            remove.addEventListener("click", e => {
-                e.stopPropagation();
-                item.remove();
-            });
-
-            item.append(remove, preview, name);
-            filesList.appendChild(item);
-        });
-
-        // يسمح باختيار نفس الملف مرة أخرى
-        input.value = "";
-    });
-
-});

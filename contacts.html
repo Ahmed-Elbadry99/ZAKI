@@ -27,7 +27,7 @@
     <!-- Main Css -->
     <link rel="stylesheet" href="./css/main.css" />
     <!-- links css -->
-    <link rel="stylesheet" href="./css/nour.css" />
+    <!-- <link rel="stylesheet" href="./css/nour.css" /> -->
     <link rel="stylesheet" href="./css/register.css" />
     <!-- General css -->
     <link rel="stylesheet" href="./css/general.css" />
@@ -181,20 +181,17 @@
             </div>
 
             <div class="page-header-actions">
-              <div class="dropdown">
+              <div class="dropdown dropdown-bar" id="moreDropdown">
                 <button
                   class="more-btn-icon"
                   type="button"
-                  onclick="toggleRowDropdown(this)"
+                  onclick="toggleDropdown(this)"
                 >
                   <img src="./assets/images/dots.svg" alt="more" />
                 </button>
 
                 <div class="dropdown-menu">
-                  <button
-                    class="dropdown-item"
-                    onclick="handleMoreAction(this, 'استخراج')"
-                  >
+                  <button class="dropdown-item">
                     <span>استخراج</span>
                     <img
                       src="./assets/images/export.svg"
@@ -214,11 +211,11 @@
                 <span>بحث</span>
               </button>
 
-              <div class="dropdown" id="statusDropdown">
+              <div class="dropdown dropdown-bar" id="statusDropdown">
                 <button
                   class="main-btn"
                   type="button"
-                  onclick="toggleDropdown('statusDropdown')"
+                  onclick="toggleDropdown(this)"
                 >
                   <span id="statusFilterLabel">القناة</span>
                   <img
@@ -236,20 +233,15 @@
 
                   <div class="dropdown-sep"></div>
 
-                  <button
-                    class="dropdown-item"
-                    onclick="selectStatusOption(this, 'الكل')"
-                  >
-                    الكل
-                  </button>
+                  <button class="dropdown-item">الكل</button>
                 </div>
               </div>
 
-              <div class="dropdown" id="dateDropdown">
+              <div class="dropdown dropdown-bar" id="dateDropdown">
                 <button
                   class="main-btn"
                   type="button"
-                  onclick="toggleDropdown('dateDropdown')"
+                  onclick="toggleDropdown(this)"
                 >
                   <span id="dateFilterLabel">تاريخ الإنشاء</span>
                   <img
@@ -260,34 +252,15 @@
                 </button>
 
                 <div class="dropdown-menu">
-                  <button
-                    class="dropdown-item"
-                    onclick="selectDateOption(this, 'اليوم')"
-                  >
-                    اليوم
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectDateOption(this, 'أخر أسبوع')"
-                  >
-                    أخر أسبوع
-                  </button>
-                  <button
-                    class="dropdown-item"
-                    onclick="selectDateOption(this, 'أخر شهر')"
-                  >
-                    أخر شهر
-                  </button>
+                  <button class="dropdown-item">اليوم</button>
+                  <button class="dropdown-item">أخر أسبوع</button>
+                  <button class="dropdown-item">أخر شهر</button>
 
                   <div class="dropdown-sep"></div>
 
                   <div class="calendar-row">
                     <label>اختر يومًا من التقويم</label>
-                    <input
-                      type="date"
-                      id="customDate"
-                      onchange="selectCustomDate(this.value)"
-                    />
+                    <input type="date" id="customDate" />
                   </div>
                 </div>
               </div>
@@ -314,11 +287,11 @@
                   <td class="col-phone">01024866589</td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="channelDropdown1">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img
                           src="./assets/images/facebook.svg"
@@ -331,21 +304,33 @@
                         />
                       </button>
 
-                      <div class="dropdown-menu"> 
-                          <button class="dropdown-item item-icon">
-                            <img src="./assets/images/facebook.svg" alt="facebook" />
-                            <span>الفيسبوك</span>
-                          </button>
-                          <button class="dropdown-item item-icon">
-                          <img src="./assets/images/insta.svg" alt="instagram" />
+                      <div class="dropdown-menu">
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/facebook.svg"
+                            alt="facebook"
+                          />
+                          <span>الفيسبوك</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/insta.svg"
+                            alt="instagram"
+                          />
                           <span>انستاجرام</span>
                         </button>
                         <button class="dropdown-item item-icon">
-                          <img src="./assets/images/location.svg" alt="location" />
+                          <img
+                            src="./assets/images/location.svg"
+                            alt="location"
+                          />
                           <span> الموقع</span>
                         </button>
                         <button class="dropdown-item item-icon">
-                          <img src="./assets/images/whatsap.svg" alt="whatsapp" />
+                          <img
+                            src="./assets/images/whatsap.svg"
+                            alt="whatsapp"
+                          />
                           <span>واتساب</span>
                         </button>
                         <button class="dropdown-item item-icon">
@@ -357,28 +342,18 @@
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown1">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
 
                       <div class="dropdown-menu">
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
-                        >
-                          محادثة
-                        </button>
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
-                        >
-                          تعديل
-                        </button>
+                        <button class="dropdown-item">محادثة</button>
+                        <button class="dropdown-item">تعديل</button>
                       </div>
                     </div>
                   </td>
@@ -389,11 +364,11 @@
                   <td class="col-phone">01024866589</td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="channelDropdown2">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img
                           src="./assets/images/facebook.svg"
@@ -405,32 +380,57 @@
                           class="arrow-icon"
                         />
                       </button>
+
+                      <div class="dropdown-menu">
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/facebook.svg"
+                            alt="facebook"
+                          />
+                          <span>الفيسبوك</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/insta.svg"
+                            alt="instagram"
+                          />
+                          <span>انستاجرام</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/location.svg"
+                            alt="location"
+                          />
+                          <span> الموقع</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/whatsap.svg"
+                            alt="whatsapp"
+                          />
+                          <span>واتساب</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img src="./assets/images/tiktok.svg" alt="tiktok" />
+                          <span>تيكتوك</span>
+                        </button>
+                      </div>
                     </div>
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown2">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
 
                       <div class="dropdown-menu">
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
-                        >
-                          محادثة
-                        </button>
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
-                        >
-                          تعديل
-                        </button>
+                        <button class="dropdown-item">محادثة</button>
+                        <button class="dropdown-item">تعديل</button>
                       </div>
                     </div>
                   </td>
@@ -441,11 +441,11 @@
                   <td class="col-phone">01024866589</td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="channelDropdown3">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img
                           src="./assets/images/facebook.svg"
@@ -457,32 +457,57 @@
                           class="arrow-icon"
                         />
                       </button>
+
+                      <div class="dropdown-menu">
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/facebook.svg"
+                            alt="facebook"
+                          />
+                          <span>الفيسبوك</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/insta.svg"
+                            alt="instagram"
+                          />
+                          <span>انستاجرام</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/location.svg"
+                            alt="location"
+                          />
+                          <span> الموقع</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/whatsap.svg"
+                            alt="whatsapp"
+                          />
+                          <span>واتساب</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img src="./assets/images/tiktok.svg" alt="tiktok" />
+                          <span>تيكتوك</span>
+                        </button>
+                      </div>
                     </div>
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown3">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
 
                       <div class="dropdown-menu">
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
-                        >
-                          محادثة
-                        </button>
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
-                        >
-                          تعديل
-                        </button>
+                        <button class="dropdown-item">محادثة</button>
+                        <button class="dropdown-item">تعديل</button>
                       </div>
                     </div>
                   </td>
@@ -493,11 +518,11 @@
                   <td class="col-phone">01024866589</td>
                   <td class="col-email">mohamed_22@gmail.com</td>
                   <td>
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="channelDropdown4">
                       <button
                         class="status-btn status new"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img
                           src="./assets/images/facebook.svg"
@@ -509,32 +534,57 @@
                           class="arrow-icon"
                         />
                       </button>
+
+                      <div class="dropdown-menu">
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/facebook.svg"
+                            alt="facebook"
+                          />
+                          <span>الفيسبوك</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/insta.svg"
+                            alt="instagram"
+                          />
+                          <span>انستاجرام</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/location.svg"
+                            alt="location"
+                          />
+                          <span> الموقع</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img
+                            src="./assets/images/whatsap.svg"
+                            alt="whatsapp"
+                          />
+                          <span>واتساب</span>
+                        </button>
+                        <button class="dropdown-item item-icon">
+                          <img src="./assets/images/tiktok.svg" alt="tiktok" />
+                          <span>تيكتوك</span>
+                        </button>
+                      </div>
                     </div>
                   </td>
                   <td class="col-date">الخميس 10:48 at ص</td>
                   <td class="col-menu">
-                    <div class="dropdown">
+                    <div class="dropdown dropdown-bar" id="menuDropdown4">
                       <button
                         class="dots-btn"
                         type="button"
-                        onclick="toggleRowDropdown(this)"
+                        onclick="toggleDropdown(this)"
                       >
                         <img src="./assets/images/dots.svg" alt="dots" />
                       </button>
 
                       <div class="dropdown-menu">
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'محادثة')"
-                        >
-                          محادثة
-                        </button>
-                        <button
-                          class="dropdown-item"
-                          onclick="handleRowAction(this, 'تعديل')"
-                        >
-                          تعديل
-                        </button>
+                        <button class="dropdown-item">محادثة</button>
+                        <button class="dropdown-item">تعديل</button>
                       </div>
                     </div>
                   </td>
@@ -556,6 +606,6 @@
     <!-- index js -->
     <script src="./js/index.js"></script>
     <!-- our js -->
-    <script src="./js/nour.js"></script>
+    <!-- <script src="./js/nour.js"></script> -->
   </body>
 </html>
