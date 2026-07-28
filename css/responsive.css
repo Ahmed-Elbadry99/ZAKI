@@ -86,6 +86,11 @@
     .customer-comments .comments-box {
         grid-area: 20px;
     }
+    .chats .chat-deatails .body .myMessage .chat-image,
+    .chats .chat-deatails .body .myMessage .chat-video {
+        width: 90px;
+        height: 90px;
+    }
 }
 
 @media (max-width: 492px) {

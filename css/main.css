@@ -984,7 +984,7 @@
 .chats .chat-deatails form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 650px;
 }
 
@@ -1052,7 +1052,6 @@
     display: flex;
     align-items: start;
     gap: 10px;
-    /* font-size: 22px; */
     font-size: clamp(14px, 3vw, 16px);
     font-weight: 600;
 }
@@ -1060,9 +1059,8 @@
 .chats .chat-deatails .body {
     flex: 1;
     overflow-y: auto;
-    height: 50%;
+    min-height: 0;
     padding-left: 20px;
-    position: relative;
 }
 
 .chats .chat-deatails .body .date {
@@ -1138,14 +1136,16 @@
     font-size: clamp(14px, 3vw, 15px);
 }
 .chats .chat-deatails .inputSend {
-    position: sticky;
-    bottom: 0;
-    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 20px;
+    /* background-color: #000; */
 }
 
 .chats .chat-deatails .inputSend .input-wrapper {
     display: flex;
-    /* flex-direction: column; */
     justify-content: space-between;
     align-items: center;
     width: calc(100% - 70px);
@@ -1185,10 +1185,6 @@
     color: rgba(255,255,255,.5);
 }
 .chats .chat-deatails .inputSend .send-btn {
-    position: absolute;
-    left: 5px;
-    top: 50%;
-    transform: translateY(-50%);
     border: none;
     background-color: transparent;
     border: 2px solid #0074a5;
@@ -1332,14 +1328,6 @@
     margin-left:8px;
     font-size:14px;
 }
-/* .chats .chat-deatails .record-actions{
-    position:absolute;
-    left:5px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    gap:8px;
-} */
 .chats .chat-deatails .record-actions button{
     width: 30px;
     height: 30px;
@@ -1387,6 +1375,78 @@
     font-weight: 700;
 }
 .chats .content .empty-chat-content .text p {
+    color: var(--white-color);
+}
+.chats .chat-deatails .file-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 10px 12px;
+    max-width: 260px;
+    margin: 6px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: 0.2s;
+}
+
+.chats .chat-deatails .file-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.chats .chat-deatails .file-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    background: #ffe5e5;
+    color: #e63946;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.chats .chat-deatails .file-details {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.chats .chat-deatails .file-details h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chats .chat-deatails .file-details span {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+.chats .chat-deatails .file-action {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    background: #f1f1f1;
+    color: #555;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.chats .chat-deatails .file-action:hover {
+    background: #e63946;
     color: var(--white-color);
 }
 
@@ -1475,22 +1535,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .chats .chat-deatails .file-card {
     display: flex;
     align-items: center;
@@ -1563,18 +1607,6 @@
     background: #e63946;
     color: var(--white-color);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3023,6 +3055,7 @@ color: #FFFFFF;
   .donut-wrap{
     display:flex;
     align-items:center;
+    justify-content: center;
     gap: 24px;
   }
   .donut-chart-box{
@@ -3058,3 +3091,4 @@ color: #FFFFFF;
     border-radius:2px;
   }
 /* NOUR CSS END */
+
